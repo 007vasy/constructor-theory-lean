@@ -79,6 +79,7 @@ Continuous integration (`.github/workflows/ci.yml`) runs the same build with
 | `ConstructorTheory/Possibility.lean` | Constructors, `Possible` / `Impossible`, composition principles, and the theorems that use them. |
 | `ConstructorTheory/Models.lean` | Consistency and independence models. |
 | `NOTES.md` | Modelling choices and the milestone 2 proposal. |
+| `MAPPING.md` | Each definition and theorem against a sentence from the source papers. |
 
 Names live in the `ConstructorTheory` namespace (`Task`, `Attribute`, `Theory`),
 because Lean 4 already uses `Task` for futures. Open `ConstructorTheory` and

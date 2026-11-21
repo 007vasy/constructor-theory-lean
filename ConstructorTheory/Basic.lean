@@ -36,10 +36,9 @@ abbrev Attribute (S : Substrate) := Set S
 
 /-- A task on a substrate is a set of input/output attribute pairs.
 
-This is `𝔄 = {x₁ → y₁, x₂ → y₂, …}` in Deutsch and Marletto. The input attributes of
-a task that a constructor can actually perform are required, in the papers, to be
-pairwise disjoint; that requirement is the predicate `Task.hasDisjointInputs`, not
-part of the data of a task.
+This is `A = {x₁ → y₁, x₂ → y₂, …}` in Deutsch and Marletto 2015, §2.
+`Task.hasDisjointInputs` is an extra predicate: those two papers do not require
+the input attributes of a task to be pairwise disjoint.
 -/
 structure Task (S : Substrate) where
   pairs : Set (Attribute S × Attribute S)
@@ -62,8 +61,8 @@ def IsSubtask {S : Substrate} (A B : Task S) : Prop :=
 
 /-- Input attributes occurring in `T` are pairwise disjoint.
 
-Deutsch and Marletto require this of a task a constructor performs: a state cannot be
-asked to undergo two different transformations.
+Not required by Deutsch 2013 or Deutsch and Marletto 2015. Kept as a predicate so
+a later development can assume it.
 -/
 def hasDisjointInputs {S : Substrate} (T : Task S) : Prop :=
   ∀ x₁ y₁ x₂ y₂ : Attribute S,
@@ -96,9 +95,9 @@ def union {S : Substrate} (A B : Task S) : Task S where
 /-- Serial composition: perform `A`, then `B`.
 
 `(x, z)` lies in `A.serial B` when some intermediate attribute `y` is an output of `A`
-on input `x` and an input of `B` toward output `z`. This is relational composition of
-the pair-set, in diagrammatic order (the left-hand task runs first), matching the
-reading of the composite task `𝔄𝔅` in Deutsch and Marletto.
+on input `x` and an input of `B` toward output `z`. This is relational composition.
+`A ⊚ B` performs `A` and then `B`. In Deutsch and Marletto 2015, §2, that net effect
+is the composite written `BA`, not `AB`.
 -/
 def serial {S : Substrate} (A B : Task S) : Task S where
   pairs := {p | ∃ x y z : Attribute S, p = (x, z) ∧ (x, y) ∈ A.pairs ∧ (y, z) ∈ B.pairs}

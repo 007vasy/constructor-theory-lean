@@ -3,20 +3,22 @@
 These notes record what the formalization actually says, where it departs from
 Deutsch (2013) and Deutsch & Marletto (2015), which claims are proved, and
 which are hypotheses. They are the place to look before extending the project.
+[`MAPPING.md`](MAPPING.md) lines each definition and theorem up against a
+sentence from those papers.
 
 ## What is formalized
 
 A **substrate** is a `Type`: its terms are states. An **attribute** is a
-`Set` of states. A **task** is a set of pairs of attributes. That is the
-reading of “an attribute is a set of states” used in both source papers, with
-states as the most specific descriptions of the substrate.
+`Set` of states. A **task** is a set of pairs of attributes. Deutsch & Marletto
+2015, §2, say an attribute “is the set of states in which the substrate has
+that attribute”. Deutsch 2013, §1.1, still speaks of pairs of states.
 
 Inside namespace `ConstructorTheory`:
 
 - `Task.serial` (`A ⊚ B`) is relational composition. `(x, z)` is a pair when
   some intermediate attribute `y` satisfies `(x, y) ∈ A` and `(y, z) ∈ B`.
-  The left-hand task runs first (diagrammatic order, the usual reading of the
-  composite task `𝔄𝔅` in the papers).
+  `A ⊚ B` performs `A` and then `B`. In Deutsch & Marletto 2015, §2, that
+  order is the composite written `BA`.
 - `Task.parallel` (`A ⊗ B`) acts on the product type. Attributes are combined
   by the Cartesian product `x ×ˢ u`.
 - `Task.transpose` (`Aᵀ`) swaps input and output, the papers’ `𝔄~`.
@@ -24,9 +26,9 @@ Inside namespace `ConstructorTheory`:
 - `Task.union` is pointwise union of pair-sets, the least upper bound of the
   subtask order.
 - `Task.hasDisjointInputs` and `Task.isFunctional` are properties of a task,
-  not data. The papers require the input attributes of a performable task to
-  be pairwise disjoint, because one state cannot be required to undergo two
-  transformations. That requirement is not baked into the type of `Task`.
+  not data. Neither source paper states that the input attributes of a task
+  must be pairwise disjoint. `isFunctional` excludes the multiple-output
+  example in Deutsch 2013, §1.1 (`{p → q, q → r, q → s}`).
 - `Theory` is a constructor theory: for each substrate, a type of constructors
   and the set of attribute pairs each constructor can transform.
 - `Theory.Possible` means some constructor’s pair-set contains the task.

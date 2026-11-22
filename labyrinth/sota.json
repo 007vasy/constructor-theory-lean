@@ -1,0 +1,191 @@
+{
+ "about": "Best formal result per question in the formalisation gap, with history.",
+ "groups": [
+  "Formalised",
+  "Open"
+ ],
+ "entries": [
+  {
+   "id": "th.catalogue-counts",
+   "group": "Formalised",
+   "cls": "Tag counts of the catalogue",
+   "result": "In our tagging: continuum 14, joint sharpness 9, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 22).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.catalogue-counts"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-continuum-iv",
+   "group": "Formalised",
+   "cls": "No continuum information variable on a finite substrate",
+   "result": "A substrate with finitely many states has no family of non-empty pairwise-disjoint attributes indexed by R.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-continuum-iv"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.droplet",
+   "group": "Formalised",
+   "cls": "Kuypers' droplet (toy)",
+   "result": "Any real-valued quantity on a finite substrate misses every open interval: a finite-atom neck cannot sweep a continuum of radii.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.droplet"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.distinguish",
+   "group": "Formalised",
+   "cls": "Overlapping attributes cannot be distinguished",
+   "result": "In the deterministic theory, sending x and y to disjoint outputs is impossible if x and y overlap.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.distinguish"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.distinguish-converse",
+   "group": "Formalised",
+   "cls": "Disjoint attributes can be distinguished",
+   "result": "In the deterministic theory, disjoint x, y with inhabited outputs can be sent to disjoint outputs.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.distinguish-converse"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.pauli-noncommute",
+   "group": "Formalised",
+   "cls": "Spin components are q-numbers",
+   "result": "sigma_x sigma_z != sigma_z sigma_x over C (ConstructorTheory/QNumber.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.pauli-noncommute"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-joint-sharp",
+   "group": "Formalised",
+   "cls": "No state is sharp for both sigma_x and sigma_z",
+   "result": "No non-zero vector in C^2 is an eigenvector of both sigma_x and sigma_z (ConstructorTheory/QNumber.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-joint-sharp"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.classical-copying",
+   "group": "Formalised",
+   "cls": "Classical copying (CT)",
+   "result": "In the deterministic theory every variable is an information variable: its cloning task is possible (ConstructorTheory/CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.classical-copying"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-superinformation",
+   "group": "Formalised",
+   "cls": "No superinformation in the deterministic theory",
+   "result": "The deterministic (classical) theory has no superinformation medium; no-cloning and complementarity need non-classical constructors (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-superinformation"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.conservation-impossible",
+   "group": "Formalised",
+   "cls": "Changing a conserved quantity is impossible (toy principle VIII)",
+   "result": "In a toy thermodynamic theory whose constructors conserve U, x -> y and y -> x are both impossible when U differs (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.conservation-impossible"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.second-law-impotence",
+   "group": "Formalised",
+   "cls": "Decreasing the monotone is impossible (toy law of impotence)",
+   "result": "In the toy thermodynamic theory, x -> y is impossible when the entropy-like monotone is strictly lower on y (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.second-law-impotence"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility",
+   "group": "Formalised",
+   "cls": "Constructor-based irreversibility (toy)",
+   "result": "A task can be possible while its transpose is impossible (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.ct-irreversibility"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility-example",
+   "group": "Formalised",
+   "cls": "Irreversibility is not vacuous (two-state example)",
+   "result": "On Bool, false -> true is possible and true -> false impossible in the toy thermodynamic theory (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.ct-irreversibility-example"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "open-nocloning",
+   "group": "Open",
+   "cls": "quantum no-cloning",
+   "result": "not formalised",
+   "status": "open",
+   "kind": "partial",
+   "refs": [
+    "q.nocloning-hilbert"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  }
+ ]
+}

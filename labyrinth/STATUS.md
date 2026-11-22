@@ -1,9 +1,9 @@
 # Labyrinth status
 
-Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
+Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 
 
-## Conjectures (16)
+## Conjectures (21)
 
 - **P1 Continuum** [`k.cont`, open] Energy and modes are infinitely divisible. Fails where hbar*omega >~ k_B T, or action ~ hbar.
 - **P2 Joint sharpness** [`k.sharp`, open] Every observable has a sharp value at once (phase-space points). Fails because [q,p] = i*hbar.
@@ -12,6 +12,11 @@ Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **P5 Labelled identity** [`k.label`, open] Identical particles carry labels. Fails: (anti)symmetrised states, Bose/Fermi statistics.
 - **P6 Smooth at all scales** [`k.smooth`, open] A differential (field) description holds down to arbitrarily small scales. Fails: divergences.
 - **Ben's thesis: the breakdown shows the description is incorrect** [`k.ben-thesis`, open] Classical laws are false-but-emergent approximations; the error lives in ontological assumptions encoded in the mathematics (continuum, joint sharpness, unlimited distinguishability), not in the calculus.
+- **C1 Finite distinguishability per action (FD)** [`k.c1-fd`, open] A substrate with energy <= E evolving for time t passes through at most ~2Et/(pi*hbar) perfectly distinguishable states (Margolus-Levitin) and, within radius R, holds at most ~2*pi*R*E/(hbar*c*ln2) bits (Bekenstein). Proposed as a constructor-theoretic principle, not a dynamical theorem.
+- **C2 Superinformation + interoperability generate the q-number algebra** [`k.c2-si`, open] Deutsch-Marletto superinformation plus the reconstruction axioms (Hardy; Chiribella-D'Ariano-Perinotti; Masanes-Mueller) single out complex Hilbert space, hence the q-number forms of the 18 'established' rows.
+- **C3 Quantitative possibility: possible to accuracy eps at cost >= f(eps)** [`k.c3-cost`, open] Attach resource costs to tasks (time, energy, steps) so that rates and coefficients become lower bounds on cost (third law: Masanes-Oppenheim).
+- **C4 Classical law = quantum law + possibility assumption X** [`k.c4-schema`, open] Every catalogue law rests on a class X of tasks that classical physics assumes possible; it fails exactly where X contains an impossible task.
+- **Chosen model: C4 frame with C1 + C2 as the two forbidden-task principles** [`k.chosen`, open] Classical laws assume two classes of tasks possible: copying arbitrary states (forbidden by superinformation) and distinguishing unboundedly many states with bounded action (forbidden by FD). Breakdown happens exactly at those tasks.
 - **q-number form: Einstein field equations at Planck scale [Speculative, SC]** [`qn.einstein`, open] semiclassical G = 8 pi G <T> vs quantised metric; BMV decides
 - **CT form: Rayleigh-Jeans law [Conjecture]** [`ct.rayleigh-jeans`, open] Changing a mode's energy by less than hbar w is impossible. Quantitative content of the law is lost in the CT form.
 - **CT form: Equipartition theorem [Conjecture]** [`ct.equipartition`, open] A mode with hbar w >> kT cannot be thermally excited by sub-quantum transfers. Quantitative content of the law is lost in the CT form.
@@ -22,9 +27,10 @@ Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **CT form: Gibbs entropy without 1/N! [Conjecture]** [`ct.gibbs`, open] No work can be extracted from mixing identical gases (identity task). Quantitative content of the law is lost in the CT form.
 - **CT form: Third law vs classical entropy [Conjecture]** [`ct.third-law`, open] Cooling to the ground state in finitely many steps is impossible. Quantitative content of the law is lost in the CT form.
 
-## Open doors (questions) (10)
+## Open doors (questions) (11)
 
-- **Formalise quantum no-cloning in the task vocabulary** [`q.nocloning-hilbert`, open] Prove 'clone every state of a qubit' impossible in a Hilbert-space Theory model (Mathlib inner-product spaces).
+- **Formalise quantum no-cloning in the task vocabulary** [`q.nocloning-hilbert`, answered] Prove 'clone every state of a qubit' impossible in a Hilbert-space Theory model (Mathlib inner-product spaces).
+- **Derive FD from the Margolus-Levitin bound in Lean** [`q.fd-from-ml`, open] In a finite-dimensional Hilbert-space Theory, prove that orthogonalisation takes time >= pi*hbar/(2E), so a bounded-energy, bounded-time task distinguishes finitely many states.
 - **CHSH <= 2 for local models, Tsirelson for quantum** [`q.bell`, open] Formalise the classical CHSH bound (finite, decidable) and state the quantum violation.
 - **Equipartition vs discrete modes** [`q.planck`, open] Prove that a discrete mode spectrum gives a finite total mean energy where equipartition diverges (Rayleigh-Jeans vs Planck).
 - **q-number form: Fourier heat law at nanoscale [Partial, SC]** [`qn.fourier`, partial] Green-Kubo exact, phonon Boltzmann SC; local law not derived
@@ -64,7 +70,7 @@ Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **Einstein field equations at Planck scale** [`x.einstein`, refuted] Classical law, taken as exact. Fails in regime: singularities; l_P. Replaced by: unknown (quantum gravity); BMV tests.
 - **QFT without cutoff (UV divergences)** [`x.qft-uv`, refuted] Classical law, taken as exact. Fails in regime: short distances. Replaced by: renormalisation; EFT.
 
-## Recent events (11 total)
+## Recent events (12 total)
 
 - 2026-11-22T03:10 · documented · Catalogue of 22 classical laws that fail at the quantum level, each with its failed assumption (backfilled)
 - 2026-11-22T03:12 · proposed · Six breakdown patterns P1-P6 proposed as the common cause (backfilled)
@@ -77,3 +83,4 @@ Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
 - 2026-11-22T04:27 · literature · Constructor-theory restatement literature: 19 papers verified on arXiv/journals; 22 laws tagged 7 Published, 3 Derived, 8 Conjecture, 4 Not expressible (CT_LITERATURE.md, CT_RESTATEMENT.md)
 - 2026-11-22T04:27 · proved · CTRestatement.lean: no superinformation in the deterministic theory; toy principle VIII and law of impotence; constructor-based irreversibility with a two-state example
 - 2026-11-22T04:27 · monitor · run_checks at local: 14/14 OK (CT restatements + CTRestatement.lean, box)
+- 2026-11-22T06:58 · monitor · run_checks at 6321c67fe6d6: 28/28 OK (closing the gap: FD, breakdown schema, qubit superinformation, Planck factor)

@@ -71,6 +71,32 @@
    "updated": "2026-11-22"
   },
   {
+   "id": "th.pauli-noncommute",
+   "group": "Formalised",
+   "cls": "Spin components are q-numbers",
+   "result": "sigma_x sigma_z != sigma_z sigma_x over C (ConstructorTheory/QNumber.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.pauli-noncommute"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-joint-sharp",
+   "group": "Formalised",
+   "cls": "No state is sharp for both sigma_x and sigma_z",
+   "result": "No non-zero vector in C^2 is an eigenvector of both sigma_x and sigma_z (ConstructorTheory/QNumber.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-joint-sharp"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
    "id": "open-nocloning",
    "group": "Open",
    "cls": "quantum no-cloning",

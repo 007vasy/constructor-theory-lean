@@ -59,6 +59,15 @@ In the map this is `k.ben-thesis`, a T5 conjecture with a test. Each claim below
 - **[interpretation]** BMV matters here because it tests one encoded assumption directly:
   whether gravity can mediate entanglement, i.e. whether it shares P2/P4 non-classicality.
 
+## 3b. Restating the laws as q-numbers
+
+- **[fact]** For 18 of the 22 laws, replacing c-numbers by q-numbers (operators) while keeping
+  the equation of motion gives a textbook law that holds where the classical one fails. The
+  classical law comes back as a limit. Three rows are partial and one, gravity, is speculative.
+  See `QNUMBER.md`.
+- **[interpretation]** This is strong support for §2. The dynamics mostly survive. What was
+  wrong was the *type* of the quantities.
+
 ## 4. Constructor theory is one attempt at laws without these assumptions
 
 - **[fact]** Constructor theory (Deutsch 2013; Deutsch & Marletto 2015) states laws as which

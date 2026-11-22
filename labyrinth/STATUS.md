@@ -1,9 +1,9 @@
 # Labyrinth status
 
-Generated 2026-11-22T03:33:21Z by `labyrinth/lab.py build`. Do not edit by hand.
+Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
 
 
-## Conjectures (7)
+## Conjectures (8)
 
 - **P1 Continuum** [`k.cont`, open] Energy and modes are infinitely divisible. Fails where hbar*omega >~ k_B T, or action ~ hbar.
 - **P2 Joint sharpness** [`k.sharp`, open] Every observable has a sharp value at once (phase-space points). Fails because [q,p] = i*hbar.
@@ -12,12 +12,16 @@ Generated 2026-11-22T03:33:21Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **P5 Labelled identity** [`k.label`, open] Identical particles carry labels. Fails: (anti)symmetrised states, Bose/Fermi statistics.
 - **P6 Smooth at all scales** [`k.smooth`, open] A differential (field) description holds down to arbitrarily small scales. Fails: divergences.
 - **Ben's thesis: the breakdown shows the description is incorrect** [`k.ben-thesis`, open] Classical laws are false-but-emergent approximations; the error lives in ontological assumptions encoded in the mathematics (continuum, joint sharpness, unlimited distinguishability), not in the calculus.
+- **q-number form: Einstein field equations at Planck scale [Speculative, SC]** [`qn.einstein`, open] semiclassical G = 8 pi G <T> vs quantised metric; BMV decides
 
-## Open doors (questions) (3)
+## Open doors (questions) (6)
 
 - **Formalise quantum no-cloning in the task vocabulary** [`q.nocloning-hilbert`, open] Prove 'clone every state of a qubit' impossible in a Hilbert-space Theory model (Mathlib inner-product spaces).
 - **CHSH <= 2 for local models, Tsirelson for quantum** [`q.bell`, open] Formalise the classical CHSH bound (finite, decidable) and state the quantum violation.
 - **Equipartition vs discrete modes** [`q.planck`, open] Prove that a discrete mode spectrum gives a finite total mean energy where equipartition diverges (Rayleigh-Jeans vs Planck).
+- **q-number form: Fourier heat law at nanoscale [Partial, SC]** [`qn.fourier`, partial] Green-Kubo exact, phonon Boltzmann SC; local law not derived
+- **q-number form: Navier-Stokes at pinch-off/superfluid [Partial, SC]** [`qn.navier-stokes`, partial] operator conservation laws exact; NS closure not derived; GP mean-field
+- **q-number form: QFT without cutoff (UV divergences) [Partial, FQ]** [`qn.qft-uv`, partial] renormalised EFT; UV completion unknown
 
 ## Hunches (speculation, not claims) (1)
 
@@ -48,7 +52,7 @@ Generated 2026-11-22T03:33:21Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **Einstein field equations at Planck scale** [`x.einstein`, refuted] Classical law, taken as exact. Fails in regime: singularities; l_P. Replaced by: unknown (quantum gravity); BMV tests.
 - **QFT without cutoff (UV divergences)** [`x.qft-uv`, refuted] Classical law, taken as exact. Fails in regime: short distances. Replaced by: renormalisation; EFT.
 
-## Recent events (7 total)
+## Recent events (8 total)
 
 - 2026-11-22T03:10 · documented · Catalogue of 22 classical laws that fail at the quantum level, each with its failed assumption (backfilled)
 - 2026-11-22T03:12 · proposed · Six breakdown patterns P1-P6 proposed as the common cause (backfilled)
@@ -57,3 +61,4 @@ Generated 2026-11-22T03:33:21Z by `labyrinth/lab.py build`. Do not edit by hand.
 - 2026-11-22T03:28 · proposed · Ben's thesis: the breakdown shows the mathematical description is incorrect; error lives in encoded ontological assumptions
 - 2026-11-22T03:29 · question · Open doors: Hilbert-space no-cloning, CHSH/Tsirelson, discrete-mode energy vs equipartition
 - 2026-11-22T03:31 · monitor · run_checks at local: 6/6 OK (first run of the harness, box)
+- 2026-11-22T03:45 · monitor · run_checks at local: 8/8 OK (q-number restatements + QNumber.lean, box)

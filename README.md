@@ -78,6 +78,7 @@ Continuous integration (`.github/workflows/ci.yml`) runs the same build with
 | `ConstructorTheory/Algebra.lean` | Theorems about that algebra. No notion of possibility. |
 | `ConstructorTheory/Possibility.lean` | Constructors, `Possible` / `Impossible`, composition principles, and the theorems that use them. |
 | `ConstructorTheory/Models.lean` | Consistency and independence models. |
+| `ConstructorTheory/QNumber.lean` | q-numbers: Pauli σx, σz do not commute and have no common eigenvector. |
 | `ConstructorTheory/FormalisationGap.lean` | The formalisation gap: breakdown-assumption table, finite substrate vs continuum (Kuypers' droplet), distinguishability needs disjointness. |
 | `docs/formalisation-gap/` | The formalisation gap: Ben's thesis, catalogue of 22 classical laws that fail at the quantum level, the common pattern, method (Bartosz Naskręcki's harness), sources. |
 | `harness/` | Verifier for the formalisation gap: `run_checks.py` (Lean axiom audit, OK/FAIL rows to `results.tsv`) and `build_map.py` (table cross-checked against Lean). |

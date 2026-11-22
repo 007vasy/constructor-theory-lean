@@ -10,6 +10,7 @@ public import ConstructorTheory.Algebra
 public import ConstructorTheory.Possibility
 public import ConstructorTheory.Models
 public import ConstructorTheory.FormalisationGap
+public import ConstructorTheory.QNumber
 
 /-!
 # Constructor theory

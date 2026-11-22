@@ -5,3 +5,11 @@ timestamp	commit	item	status	axioms	note
 2026-11-22T03:31:52Z	local	th.droplet	OK	Classical.choice,Quot.sound,propext	standard axioms only | first run of the harness, box
 2026-11-22T03:31:52Z	local	th.distinguish	OK	Classical.choice,Quot.sound,propext	standard axioms only | first run of the harness, box
 2026-11-22T03:31:52Z	local	th.distinguish-converse	OK	Classical.choice,Quot.sound,propext	standard axioms only | first run of the harness, box
+2026-11-22T03:45:22Z	local	table-vs-lean	OK	-	Python table == Lean catalogue | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.catalogue-counts	OK	propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.no-continuum-iv	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.droplet	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.distinguish	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.distinguish-converse	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.pauli-noncommute	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box
+2026-11-22T03:45:22Z	local	th.no-joint-sharp	OK	Classical.choice,Quot.sound,propext	standard axioms only | q-number restatements + QNumber.lean, box

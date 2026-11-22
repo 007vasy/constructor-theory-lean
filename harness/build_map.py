@@ -73,7 +73,37 @@ LEAN_THEOREMS = [
      "In the deterministic theory, sending x and y to disjoint outputs is impossible if x and y overlap."),
     ("th.distinguish-converse", "distinguish_possible_of_disjoint", "Disjoint attributes can be distinguished",
      "In the deterministic theory, disjoint x, y with inhabited outputs can be sent to disjoint outputs."),
+    ("th.pauli-noncommute", "pauliX_mul_pauliZ_ne", "Spin components are q-numbers",
+     "sigma_x sigma_z != sigma_z sigma_x over C (ConstructorTheory/QNumber.lean)."),
+    ("th.no-joint-sharp", "no_common_eigenvector", "No state is sharp for both sigma_x and sigma_z",
+     "No non-zero vector in C^2 is an eigenvector of both sigma_x and sigma_z (ConstructorTheory/QNumber.lean)."),
 ]
+
+# q-number restatements (docs/formalisation-gap/QNUMBER.md): slug -> (status, form, short statement)
+QNUMBER = {
+    "newton": ("Established", "FQ", "Heisenberg EoM with [x,p]=i hbar; Ehrenfest limit"),
+    "liouville": ("Established", "FQ", "von Neumann equation; Moyal -> Poisson as hbar -> 0"),
+    "tunnelling": ("Established", "FQ", "Schrodinger/Heisenberg with V(x); WKB transmission"),
+    "rayleigh-jeans": ("Established", "FQ", "quantised EM field; Planck; RJ for n >> 1"),
+    "equipartition": ("Established", "FQ", "(hbar w/2) coth(hbar w/2kT); kT limit"),
+    "larmor": ("Established", "FQ", "QED bound states; Wigner-Weisskopf emission; correspondence"),
+    "photoelectric": ("Established", "SC", "quantised electron in classical field suffices (Lamb-Scully)"),
+    "vacuum": ("Established", "FQ", "vacuum fluctuations; Casimir pressure"),
+    "dulong-petit": ("Established", "FQ", "phonons; Debye T^3; 3R at high T"),
+    "maxwell-boltzmann": ("Established", "FQ", "grand-canonical density operator on Fock space; FD/BE"),
+    "gibbs": ("Established", "FQ", "von Neumann entropy on symmetrised space"),
+    "drude": ("Established", "FQ", "Kubo formula; Landauer; Bloch-Boltzmann limit"),
+    "magnetism": ("Established", "FQ", "spin operators; Brillouin; Curie law"),
+    "third-law": ("Established", "FQ", "discrete gapped spectrum; S -> k ln g0"),
+    "fourier": ("Partial", "SC", "Green-Kubo exact, phonon Boltzmann SC; local law not derived"),
+    "navier-stokes": ("Partial", "SC", "operator conservation laws exact; NS closure not derived; GP mean-field"),
+    "einstein": ("Speculative", "SC", "semiclassical G = 8 pi G <T> vs quantised metric; BMV decides"),
+    "qft-uv": ("Partial", "FQ", "renormalised EFT; UV completion unknown"),
+    "spin": ("Established", "FQ", "spin operators, [Sx,Sy]=i hbar Sz; exact Ehrenfest precession"),
+    "bell": ("Established", "FQ", "tensor-product observables; Tsirelson 2 sqrt 2"),
+    "measurement": ("Established", "FQ", "von Neumann measurement unitary; Ozawa relation"),
+    "copying": ("Established", "FQ", "unitarity forbids cloning non-orthogonal states"),
+}
 
 
 def lean_catalogue():
@@ -167,6 +197,20 @@ def build():
          "statement": "https://github.com/nasqret/labyrinth-exploration (MIT): tiers, map, events, referees, escalation.",
          "created": TODAY, "updated": TODAY},
     ]
+    for law in LAWS:
+        slug = law[0]
+        status, form, stmt = QNUMBER[slug]
+        base = {"id": f"qn.{slug}", "title": f"q-number form: {law[1]} [{status}, {form}]",
+                "statement": stmt, "links": [{"to": f"x.{slug}", "rel": "modifies"}],
+                "where": ["docs/formalisation-gap/QNUMBER.md"], "created": TODAY, "updated": TODAY}
+        if status == "Established":
+            base.update(kind="theorem", tier="T1", status="established")
+        elif status == "Partial":
+            base.update(kind="question", status="partial")
+        else:
+            base.update(kind="conjecture", tier="T5", status="open",
+                        test="BMV: observe (or bound) gravitationally induced entanglement between two masses in superposition.")
+        nodes.append(base)
     knowledge = {
         "schema": 1,
         "meta": {"title": "The formalisation gap", "eyebrow": "constructor-theory-lean · labyrinth map",
@@ -188,6 +232,8 @@ def build():
     }
     (LAB / "knowledge.json").write_text(json.dumps(knowledge, indent=1, ensure_ascii=False) + "\n")
     (LAB / "sota.json").write_text(json.dumps(sota, indent=1, ensure_ascii=False) + "\n")
+    assert set(QNUMBER) == {l[0] for l in LAWS}, "every law needs a q-number row"
+    print("q-number status", dict(Counter(v[0] for v in QNUMBER.values())))
     counts = Counter(c for l in LAWS for c in l[5])
     print("laws", len(LAWS), dict(counts))
 

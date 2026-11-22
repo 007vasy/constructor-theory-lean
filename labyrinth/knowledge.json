@@ -812,6 +812,60 @@
    "updated": "2026-11-22"
   },
   {
+   "id": "th.pauli-noncommute",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Spin components are q-numbers",
+   "statement": "sigma_x sigma_z != sigma_z sigma_x over C (ConstructorTheory/QNumber.lean).",
+   "note": "Lean: ConstructorTheory.pauliX_mul_pauliZ_ne. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/FormalisationGap.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/FormalisationGap.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-joint-sharp",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "No state is sharp for both sigma_x and sigma_z",
+   "statement": "No non-zero vector in C^2 is an eigenvector of both sigma_x and sigma_z (ConstructorTheory/QNumber.lean).",
+   "note": "Lean: ConstructorTheory.no_common_eigenvector. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/FormalisationGap.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/FormalisationGap.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
    "id": "k.ben-thesis",
    "kind": "conjecture",
    "tier": "T5",
@@ -911,6 +965,422 @@
    "statement": "https://github.com/nasqret/labyrinth-exploration (MIT): tiers, map, events, referees, escalation.",
    "created": "2026-11-22",
    "updated": "2026-11-22"
+  },
+  {
+   "id": "qn.newton",
+   "title": "q-number form: Newton/Hamilton trajectories [Established, FQ]",
+   "statement": "Heisenberg EoM with [x,p]=i hbar; Ehrenfest limit",
+   "links": [
+    {
+     "to": "x.newton",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.liouville",
+   "title": "q-number form: Liouville phase-space density [Established, FQ]",
+   "statement": "von Neumann equation; Moyal -> Poisson as hbar -> 0",
+   "links": [
+    {
+     "to": "x.liouville",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.rayleigh-jeans",
+   "title": "q-number form: Rayleigh-Jeans law [Established, FQ]",
+   "statement": "quantised EM field; Planck; RJ for n >> 1",
+   "links": [
+    {
+     "to": "x.rayleigh-jeans",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.equipartition",
+   "title": "q-number form: Equipartition theorem [Established, FQ]",
+   "statement": "(hbar w/2) coth(hbar w/2kT); kT limit",
+   "links": [
+    {
+     "to": "x.equipartition",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.dulong-petit",
+   "title": "q-number form: Dulong-Petit law [Established, FQ]",
+   "statement": "phonons; Debye T^3; 3R at high T",
+   "links": [
+    {
+     "to": "x.dulong-petit",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.larmor",
+   "title": "q-number form: Larmor radiation / classical atom [Established, FQ]",
+   "statement": "QED bound states; Wigner-Weisskopf emission; correspondence",
+   "links": [
+    {
+     "to": "x.larmor",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.photoelectric",
+   "title": "q-number form: Wien/Lenard photoelectric expectation [Established, SC]",
+   "statement": "quantised electron in classical field suffices (Lamb-Scully)",
+   "links": [
+    {
+     "to": "x.photoelectric",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.maxwell-boltzmann",
+   "title": "q-number form: Maxwell-Boltzmann statistics [Established, FQ]",
+   "statement": "grand-canonical density operator on Fock space; FD/BE",
+   "links": [
+    {
+     "to": "x.maxwell-boltzmann",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.gibbs",
+   "title": "q-number form: Gibbs entropy without 1/N! [Established, FQ]",
+   "statement": "von Neumann entropy on symmetrised space",
+   "links": [
+    {
+     "to": "x.gibbs",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.drude",
+   "title": "q-number form: Drude conductivity at low T [Established, FQ]",
+   "statement": "Kubo formula; Landauer; Bloch-Boltzmann limit",
+   "links": [
+    {
+     "to": "x.drude",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.magnetism",
+   "title": "q-number form: Curie law / Bohr-van Leeuwen [Established, FQ]",
+   "statement": "spin operators; Brillouin; Curie law",
+   "links": [
+    {
+     "to": "x.magnetism",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.spin",
+   "title": "q-number form: Classical spin (Stern-Gerlach) [Established, FQ]",
+   "statement": "spin operators, [Sx,Sy]=i hbar Sz; exact Ehrenfest precession",
+   "links": [
+    {
+     "to": "x.spin",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.vacuum",
+   "title": "q-number form: Classical vacuum (no Casimir) [Established, FQ]",
+   "statement": "vacuum fluctuations; Casimir pressure",
+   "links": [
+    {
+     "to": "x.vacuum",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.fourier",
+   "title": "q-number form: Fourier heat law at nanoscale [Partial, SC]",
+   "statement": "Green-Kubo exact, phonon Boltzmann SC; local law not derived",
+   "links": [
+    {
+     "to": "x.fourier",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "partial"
+  },
+  {
+   "id": "qn.navier-stokes",
+   "title": "q-number form: Navier-Stokes at pinch-off/superfluid [Partial, SC]",
+   "statement": "operator conservation laws exact; NS closure not derived; GP mean-field",
+   "links": [
+    {
+     "to": "x.navier-stokes",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "partial"
+  },
+  {
+   "id": "qn.third-law",
+   "title": "q-number form: Third law vs classical entropy [Established, FQ]",
+   "statement": "discrete gapped spectrum; S -> k ln g0",
+   "links": [
+    {
+     "to": "x.third-law",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.bell",
+   "title": "q-number form: Bell local hidden variables [Established, FQ]",
+   "statement": "tensor-product observables; Tsirelson 2 sqrt 2",
+   "links": [
+    {
+     "to": "x.bell",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.measurement",
+   "title": "q-number form: Classical measurement (no disturbance) [Established, FQ]",
+   "statement": "von Neumann measurement unitary; Ozawa relation",
+   "links": [
+    {
+     "to": "x.measurement",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.copying",
+   "title": "q-number form: Universal copying of information [Established, FQ]",
+   "statement": "unitarity forbids cloning non-orthogonal states",
+   "links": [
+    {
+     "to": "x.copying",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.tunnelling",
+   "title": "q-number form: Classical tunnelling barrier [Established, FQ]",
+   "statement": "Schrodinger/Heisenberg with V(x); WKB transmission",
+   "links": [
+    {
+     "to": "x.tunnelling",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "qn.einstein",
+   "title": "q-number form: Einstein field equations at Planck scale [Speculative, SC]",
+   "statement": "semiclassical G = 8 pi G <T> vs quantised metric; BMV decides",
+   "links": [
+    {
+     "to": "x.einstein",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "BMV: observe (or bound) gravitationally induced entanglement between two masses in superposition."
+  },
+  {
+   "id": "qn.qft-uv",
+   "title": "q-number form: QFT without cutoff (UV divergences) [Partial, FQ]",
+   "statement": "renormalised EFT; UV completion unknown",
+   "links": [
+    {
+     "to": "x.qft-uv",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "partial"
   }
  ]
 }

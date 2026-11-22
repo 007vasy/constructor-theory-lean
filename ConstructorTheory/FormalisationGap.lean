@@ -91,20 +91,21 @@ def catalogue : List (String × List BreakdownAssumption) :=
   , ("Classical tunnelling barrier", [jointSharpness])
   , ("Einstein field equations at Planck scale", [smoothAllScales, continuum])
   , ("QFT without cutoff (UV divergences)", [smoothAllScales])
+  , ("Non-contextual values (Mermin-Peres magic square)", [jointSharpness])
   ]
 
 /-- Number of laws carrying a given tag. -/
 def tagCount (a : BreakdownAssumption) : Nat :=
   (catalogue.filter fun e => decide (a ∈ e.2)).length
 
-theorem catalogue_length : catalogue.length = 22 := by decide
+theorem catalogue_length : catalogue.length = 23 := by decide
 
 /-- Every catalogued law is tagged with at least one failing assumption. -/
 theorem catalogue_all_tagged : ∀ e ∈ catalogue, e.2 ≠ [] := by decide
 
 /-- In our tagging, the continuum assumption is the most common culprit. -/
 theorem continuum_most_common :
-    tagCount continuum = 14 ∧ tagCount jointSharpness = 9 ∧
+    tagCount continuum = 14 ∧ tagCount jointSharpness = 10 ∧
       tagCount labelledIdentity = 3 ∧ tagCount smoothAllScales = 4 ∧
       tagCount localRealism = 1 ∧ tagCount universalDistinguishability = 2 := by
   decide

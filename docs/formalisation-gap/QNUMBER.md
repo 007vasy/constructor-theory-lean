@@ -62,8 +62,9 @@ experimental test.
 | 20 | Bell local hidden variables | Observables on $\mathcal H_A\otimes\mathcal H_B$; $\lvert\langle\hat{\mathcal B}_{\text{CHSH}}\rangle\rvert \le 2\sqrt2$ (Tsirelson 1980); local in the Heisenberg picture (Deutsch & Hayden 2000) | Commuting (c-number) observables give ≤ 2 | Established | FQ |
 | 21 | Classical measurement | Measurement as unitary coupling $\hat U = e^{-i\lambda\hat A\otimes\hat P_{\text{meter}}/\hbar}$ (von Neumann); Ozawa's error–disturbance relation | Decoherence of the meter; commuting observables gave the classical idealisation | Established | FQ |
 | 22 | Universal copying | Unitarity forbids $\hat U\lvert\psi\rangle\lvert 0\rangle = \lvert\psi\rangle\lvert\psi\rangle$ for non-orthogonal states; orthogonal sets can be copied | Copying is restored on any orthogonal basis (classical information) | Established | FQ. In constructor theory: superinformation can't be cloned |
+| 23 | Non-contextual values (magic square) | Nine two-qubit Pauli observables; each row multiplies to $+I$, each column to $-I$ (rows and columns commute internally). With two Bell pairs the players win every round | Pre-assigned values win at most 8/9 | Established | FQ. Lean: `MagicSquare.magic_rows`, `magic_cols`, `magic_row_commute`, `magic_col_commute` |
 
-**Count:** 18 Established, 3 Partial/open (15, 16, 18), 1 Speculative (17). Of the Established
+**Count:** 19 Established (row 23 added 22 Nov 2026), 3 Partial/open (15, 16, 18), 1 Speculative (17). Of the Established
 rows, two (7, 12) are usually used in semiclassical form, and one (8) has a known alternative
 derivation.
 

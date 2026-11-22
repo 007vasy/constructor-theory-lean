@@ -13,6 +13,9 @@ public import ConstructorTheory.FormalisationGap
 public import ConstructorTheory.QNumber
 public import ConstructorTheory.CTRestatement
 public import ConstructorTheory.ClosingTheGap
+public import ConstructorTheory.MagicSquare
+public import ConstructorTheory.SpeedLimit
+public import ConstructorTheory.IdenticalParticles
 
 /-!
 # Constructor theory

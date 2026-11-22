@@ -35,6 +35,8 @@ Standard references for the catalogue (bracket numbers match `CATALOGUE.md`):
 17. J. S. Bell, Physics 1, 195 (1964); A. Aspect, P. Grangier, G. Roger, PRL 49, 91 (1982); B. Hensen et al., Nature 526, 682 (2015), doi:10.1038/nature15759.
 18. W. K. Wootters & W. H. Zurek, Nature 299, 802 (1982), doi:10.1038/299802a0; D. Dieks, Phys. Lett. A 92, 271 (1982).
 19. D. Deutsch & C. Marletto, "Constructor theory of information", Proc. R. Soc. A 471, 20140540 (2015), doi:10.1098/rspa.2014.0540; D. Deutsch, "Constructor theory", Synthese 190, 4331 (2013).
+20. N. D. Mermin, "Simple unified form for the major no-hidden-variables theorems", PRL 65, 3373 (1990), doi:10.1103/PhysRevLett.65.3373; A. Peres, "Incompatible results of quantum measurements", Phys. Lett. A 151, 107 (1990), doi:10.1016/0375-9601(90)90172-K (both checked on Crossref, 22 Nov 2026).
+21. Google Quantum AI and collaborators, "Quantum-classical separation in bounded-resource tasks arising from measurement contextuality", Science 394, 870–874 (2026), doi:10.1126/science.aec3042 (Crossref), arXiv:2512.02284; blog: S. Kumar & R. Cortiñas, "A game you cannot win unless you have a quantum computer", Google Research, 19 Nov 2026, https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/ (98.3% magic-square win rate; classical maximum 8/9).
 
 The standard references are cited from well-established literature and weren't re-opened this
 session. Check volume and page numbers before citing externally.

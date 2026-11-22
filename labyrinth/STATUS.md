@@ -1,9 +1,9 @@
 # Labyrinth status
 
-Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
+Generated 2026-11-22T08:57:43Z by `labyrinth/lab.py build`. Do not edit by hand.
 
 
-## Conjectures (21)
+## Conjectures (22)
 
 - **P1 Continuum** [`k.cont`, open] Energy and modes are infinitely divisible. Fails where hbar*omega >~ k_B T, or action ~ hbar.
 - **P2 Joint sharpness** [`k.sharp`, open] Every observable has a sharp value at once (phase-space points). Fails because [q,p] = i*hbar.
@@ -17,6 +17,7 @@ Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **C3 Quantitative possibility: possible to accuracy eps at cost >= f(eps)** [`k.c3-cost`, open] Attach resource costs to tasks (time, energy, steps) so that rates and coefficients become lower bounds on cost (third law: Masanes-Oppenheim).
 - **C4 Classical law = quantum law + possibility assumption X** [`k.c4-schema`, open] Every catalogue law rests on a class X of tasks that classical physics assumes possible; it fails exactly where X contains an impossible task.
 - **Chosen model: C4 frame with C1 + C2 as the two forbidden-task principles** [`k.chosen`, open] Classical laws assume two classes of tasks possible: copying arbitrary states (forbidden by superinformation) and distinguishing unboundedly many states with bounded action (forbidden by FD). Breakdown happens exactly at those tasks.
+- **Revised model: quantum kinematics + energy dynamics + exchange symmetry** [`k.chosen-v2`, open] Classical laws fail at three forbidden tasks: (a) copying/jointly sharpening arbitrary attributes, (b) unbounded distinction with bounded action (now derived from (a)'s Hilbert-space form plus dynamics, up to a spectral assumption), (c) distinguishing identical substrates from their permutations.
 - **q-number form: Einstein field equations at Planck scale [Speculative, SC]** [`qn.einstein`, open] semiclassical G = 8 pi G <T> vs quantised metric; BMV decides
 - **CT form: Rayleigh-Jeans law [Conjecture]** [`ct.rayleigh-jeans`, open] Changing a mode's energy by less than hbar w is impossible. Quantitative content of the law is lost in the CT form.
 - **CT form: Equipartition theorem [Conjecture]** [`ct.equipartition`, open] A mode with hbar w >> kT cannot be thermally excited by sub-quantum transfers. Quantitative content of the law is lost in the CT form.
@@ -27,10 +28,11 @@ Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **CT form: Gibbs entropy without 1/N! [Conjecture]** [`ct.gibbs`, open] No work can be extracted from mixing identical gases (identity task). Quantitative content of the law is lost in the CT form.
 - **CT form: Third law vs classical entropy [Conjecture]** [`ct.third-law`, open] Cooling to the ground state in finitely many steps is impossible. Quantitative content of the law is lost in the CT form.
 
-## Open doors (questions) (11)
+## Open doors (questions) (12)
 
 - **Formalise quantum no-cloning in the task vocabulary** [`q.nocloning-hilbert`, answered] Prove 'clone every state of a qubit' impossible in a Hilbert-space Theory model (Mathlib inner-product spaces).
-- **Derive FD from the Margolus-Levitin bound in Lean** [`q.fd-from-ml`, open] In a finite-dimensional Hilbert-space Theory, prove that orthogonalisation takes time >= pi*hbar/(2E), so a bounded-energy, bounded-time task distinguishes finitely many states.
+- **Derive FD from the Margolus-Levitin bound in Lean** [`q.fd-from-ml`, answered] In a finite-dimensional Hilbert-space Theory, prove that orthogonalisation takes time >= pi*hbar/(2E), so a bounded-energy, bounded-time task distinguishes finitely many states.
+- **Sharp Margolus-Levitin constant pi/2 in Lean** [`q.ml-sharp`, open] Prove cos x >= 1 - (2/pi)(x + sin x) for x >= 0 and hence t >= pi/(2<E>).
 - **CHSH <= 2 for local models, Tsirelson for quantum** [`q.bell`, open] Formalise the classical CHSH bound (finite, decidable) and state the quantum violation.
 - **Equipartition vs discrete modes** [`q.planck`, open] Prove that a discrete mode spectrum gives a finite total mean energy where equipartition diverges (Rayleigh-Jeans vs Planck).
 - **q-number form: Fourier heat law at nanoscale [Partial, SC]** [`qn.fourier`, partial] Green-Kubo exact, phonon Boltzmann SC; local law not derived
@@ -45,7 +47,7 @@ Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 
 - **Quantum theory carries the same kind of assumptions** [`h.quantum-also`, live] Continuous Hilbert space, complex amplitudes and smooth spacetime are themselves encoded ontological assumptions; QFT/GR divergences are their failure signal.
 
-## Dead ends (refuted) (22)
+## Dead ends (refuted) (25)
 
 - **Newton/Hamilton trajectories** [`x.newton`, refuted] Classical law, taken as exact. Fails in regime: action ~ hbar. Replaced by: Schrodinger / Heisenberg.
 - **Liouville phase-space density** [`x.liouville`, refuted] Classical law, taken as exact. Fails in regime: interference states. Replaced by: von Neumann; Wigner can go negative.
@@ -69,8 +71,11 @@ Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **Classical tunnelling barrier** [`x.tunnelling`, refuted] Classical law, taken as exact. Fails in regime: thin barriers, light particles. Replaced by: Gamow tunnelling.
 - **Einstein field equations at Planck scale** [`x.einstein`, refuted] Classical law, taken as exact. Fails in regime: singularities; l_P. Replaced by: unknown (quantum gravity); BMV tests.
 - **QFT without cutoff (UV divergences)** [`x.qft-uv`, refuted] Classical law, taken as exact. Fails in regime: short distances. Replaced by: renormalisation; EFT.
+- **Non-contextual values (Mermin-Peres magic square)** [`x.magic-square`, refuted] Classical law, taken as exact. Fails in regime: two Bell pairs, nine Pauli observables. Replaced by: contextual quantum observables; win rate 1 vs 8/9.
+- **'Two forbidden tasks' is complete** [`x.two-tasks-complete`, refuted] Claim: every catalogue law fails at a forbidden copy/sharpening (a) or a forbidden fine distinction (b).
+- **FD follows from superinformation alone** [`x.fd-from-superinformation`, refuted] Claim: task (b) reduces to task (a).
 
-## Recent events (12 total)
+## Recent events (13 total)
 
 - 2026-11-22T03:10 · documented · Catalogue of 22 classical laws that fail at the quantum level, each with its failed assumption (backfilled)
 - 2026-11-22T03:12 · proposed · Six breakdown patterns P1-P6 proposed as the common cause (backfilled)
@@ -84,3 +89,4 @@ Generated 2026-11-22T06:58:54Z by `labyrinth/lab.py build`. Do not edit by hand.
 - 2026-11-22T04:27 · proved · CTRestatement.lean: no superinformation in the deterministic theory; toy principle VIII and law of impotence; constructor-based irreversibility with a two-state example
 - 2026-11-22T04:27 · monitor · run_checks at local: 14/14 OK (CT restatements + CTRestatement.lean, box)
 - 2026-11-22T06:58 · monitor · run_checks at 6321c67fe6d6: 28/28 OK (closing the gap: FD, breakdown schema, qubit superinformation, Planck factor)
+- 2026-11-22T08:57 · monitor · run_checks at 9a191bbc5c78: 46/46 OK (law 23 magic square, speed limit, identical particles)

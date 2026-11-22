@@ -14,7 +14,7 @@ symmetries, conservation laws, and Maxwell/Hamilton *as operator equations*.
 Counts below come from the tags in `CATALOGUE.md` and are checked by `decide` in
 `ConstructorTheory/FormalisationGap.lean`. There are 22 laws, and most carry more than one tag.
 
-## P1. Continuum: energy and modes are infinitely divisible (14 of 22)
+## P1. Continuum: energy and modes are infinitely divisible (14 of 23)
 
 *Rayleigh–Jeans, equipartition, Dulong–Petit, Larmor atom, photoelectric, Drude C_V,
 magnetism, third law, Casimir, Stern–Gerlach, Fourier, Navier–Stokes, GR.*
@@ -26,7 +26,7 @@ radiative collapse). Quantization puts a minimum excitation ħω on each mode. M
 Planck, Einstein–Debye heat capacities, the third law and atomic stability. The classical
 answer is right only where ħω ≪ k_BT, or more generally where action ≫ ħ.
 
-## P2. Joint sharpness: every observable has a definite value at once (9 of 22)
+## P2. Joint sharpness: every observable has a definite value at once (10 of 23)
 
 *Newton/Hamilton, Liouville, tunnelling, Larmor atom, magnetism, Stern–Gerlach, vacuum,
 measurement, Bell.*
@@ -36,7 +36,14 @@ no state gives both sharp values. "Trajectory", "particle sits at the bottom of 
 "field exactly zero" are all such points. So the ground state has zero-point motion (atoms don't
 collapse, the vacuum has Casimir energy), and barriers leak.
 
-## P3. Local realism: correlations come from local, pre-set values (1 of 22, but foundational)
+**Contextuality (row 23, added 22 Nov 2026).** The sharpest form of P2. Even observables that
+*commute* in pairs cannot all carry pre-assigned values: in the Mermin–Peres square every row and
+every column is a set of compatible observables, yet no table of ±1 values satisfies the product
+rules (Lean: `MagicSquare.no_magic_table`). Pre-assigned strategies win the game at most 8/9 of
+the time (`MagicSquare.classical_best_rate`); the quantum strategy wins always, and Willow won
+98.3% of rounds (`SOURCES.md` [20], [21]).
+
+## P3. Local realism: correlations come from local, pre-set values (1 of 23, but foundational)
 
 *Bell–CHSH.*
 
@@ -44,7 +51,7 @@ collapse, the vacuum has Casimir energy), and barriers leak.
 counts once, but it is the one that rules out "fix it with hidden sharp values". You can't
 repair P2 classically without giving up locality.
 
-## P4. Universal distinguishability and copying (2 of 22, and the constructor-theory core)
+## P4. Universal distinguishability and copying (2 of 23, and the constructor-theory core)
 
 *Classical measurement, universal copying.*
 
@@ -56,7 +63,7 @@ variables that can't be cloned as a whole. In constructor-theory terms, "copy an
 an **impossible task**. Lean section 3 proves the classical skeleton: in a deterministic
 theory, distinguishing two attributes is possible only if they are disjoint.
 
-## P5. Labelled identity (3 of 22)
+## P5. Labelled identity (3 of 23)
 
 *Maxwell–Boltzmann, Gibbs paradox, Drude.*
 
@@ -65,7 +72,7 @@ Quantum states are symmetric or antisymmetric, which gives Bose/Fermi statistics
 pressure and the 1/N! factor. This is P4 applied to particles: there is *no attribute* that
 tells which electron is which.
 
-## P6. Smooth at all scales (4 of 22)
+## P6. Smooth at all scales (4 of 23)
 
 *Fourier, Navier–Stokes, Einstein equations, UV-divergent QFT.*
 

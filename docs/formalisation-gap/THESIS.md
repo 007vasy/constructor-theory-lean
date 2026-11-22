@@ -100,3 +100,13 @@ Find a classical law whose quantum-level failure can't be traced to any of P1–
 a better mathematical *technique* alone, with no ontology changed, fixes the prediction. Either
 would refute the claim that "the error is in the encoded assumptions". The map records the
 attempt as an event, whatever the outcome.
+
+## Closing the gap
+
+The constructive follow-up is [`CLOSING_THE_GAP.md`](CLOSING_THE_GAP.md). It turns this thesis
+into a theorem schema (**[Lean]** `law_fails_iff`: a law resting on a class X of possibility
+assumptions fails exactly where X contains an impossible task) and proposes a hard-to-vary model
+with a fixed menu of two forbidden tasks: copying or jointly sharpening arbitrary attributes
+(superinformation) and distinguishing unboundedly many attributes with bounded action (finite
+distinguishability). **[interpretation]** It covers 20 of the 22 catalogue rows; the two
+identical-particle rows are its live refutation targets.

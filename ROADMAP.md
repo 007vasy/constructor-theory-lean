@@ -90,6 +90,18 @@ A coding agent is working on this on a branch. It has not yet been merged to
   table from milestone 1 before taking any theorem as a theorem of constructor
   theory.
 
+## Closing the gap (side track, opened 22 Nov 2026)
+
+See `docs/formalisation-gap/CLOSING_THE_GAP.md`. Done: breakdown schema, finite
+distinguishability ⇔ discreteness for deterministic theories, two-qubit superinformation,
+Planck factor (`ConstructorTheory/ClosingTheGap.lean`). Next:
+
+- Derive finite distinguishability from a quantum speed limit (Mandelstam–Tamm /
+  Margolus–Levitin) in a finite-dimensional Hilbert-space `Theory`, so the chosen model rests
+  on one principle.
+- Try to refute the model on the identical-particle rows (Maxwell–Boltzmann, Gibbs).
+- A cost-valued (quantitative) possibility predicate, for rates and coefficients.
+
 ## Related, not in this three-paper queue
 
 Constructor theory of time — David Deutsch and Chiara Marletto,

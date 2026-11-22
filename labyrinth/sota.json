@@ -175,14 +175,196 @@
    "updated": "2026-11-22"
   },
   {
-   "id": "open-nocloning",
+   "id": "th.breakdown-exact",
+   "group": "Formalised",
+   "cls": "Breakdown is exact (Ben's thesis, schema)",
+   "result": "A law that is derived from and entails 'every task in X is possible' fails in a theory iff some task of X is impossible there.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.breakdown-exact"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.fd-no-continuum",
+   "group": "Formalised",
+   "cls": "FD forbids continuum read-outs",
+   "result": "Under finite distinguishability, no read-out of a continuum of bounded-energy attributes is possible.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.fd-no-continuum"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.fd-iff-discrete",
+   "group": "Formalised",
+   "cls": "FD in a deterministic theory = finite energy shells",
+   "result": "The deterministic theory satisfies FD on S for E iff every shell {E <= e} is finite.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.fd-iff-discrete"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.continuum-violates-fd",
+   "group": "Formalised",
+   "cls": "The classical continuum violates FD for every energy function",
+   "result": "For any E : R -> R, the deterministic theory on a line violates FD (a countable union of finite shells cannot cover R).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.continuum-violates-fd"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ladder-fd",
+   "group": "Formalised",
+   "cls": "A ladder of quanta satisfies FD",
+   "result": "Levels n with energy n (units of hbar*omega) have finite shells, so FD holds on the ladder.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.ladder-fd"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-cloning",
+   "group": "Formalised",
+   "cls": "No-cloning (Wootters-Zurek/Dieks), any dimension",
+   "result": "An inner-product-preserving map that clones psi and phi onto a normalised blank forces <psi,phi> in {0,1}.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-cloning"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.qclone-impossible",
+   "group": "Formalised",
+   "cls": "Cloning non-orthogonal qubit states is an impossible task",
+   "result": "In any isometric two-qubit theory, cloning two states with overlap outside {0,1} is impossible.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.qclone-impossible"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.qubit-basis-clone",
+   "group": "Formalised",
+   "cls": "The computational basis is an information variable (CNOT)",
+   "result": "CNOT clones {|0>, |1>} onto |0>.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.qubit-basis-clone"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.qubit-rotated-clone",
+   "group": "Formalised",
+   "cls": "The rotated basis {phi, phi_perp} is an information variable",
+   "result": "(R x R) CNOT (R^H x 1) clones {(3,4)/5, (-4,3)/5} onto |0>.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.qubit-rotated-clone"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.qubit-nonorth",
+   "group": "Formalised",
+   "cls": "A variable that is not an information variable",
+   "result": "{|0>} and {(3|0>+4|1>)/5} are disjoint, yet cloning them is impossible (overlap 3/5).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.qubit-nonorth"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.copying-law-breaks",
+   "group": "Formalised",
+   "cls": "The classical copying law breaks exactly at a non-orthogonal pair",
+   "result": "In the isometric qubit theory a pair of distinct sharp states cannot be cloned, while the basis can.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.copying-law-breaks"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.qubit-superinformation",
+   "group": "Formalised",
+   "cls": "The quantum qubit theory is a superinformation theory",
+   "result": "{|0>,|1>} and {phi,phi_perp} are information variables; their union is not (Deutsch-Marletto, cloning clause).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.qubit-superinformation"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.planck-ceiling",
+   "group": "Formalised",
+   "cls": "Equipartition is the ceiling of the Planck factor",
+   "result": "x/(e^x - 1) <= 1 for x > 0: a quantised mode never holds more than k_B T on average.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.planck-ceiling"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.planck-freeze",
+   "group": "Formalised",
+   "cls": "High-frequency modes freeze out",
+   "result": "x/(e^x - 1) -> 0 as x -> infinity: the ultraviolet catastrophe is removed.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.planck-freeze"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "open-fd-ml",
    "group": "Open",
-   "cls": "quantum no-cloning",
+   "cls": "FD from Margolus-Levitin",
    "result": "not formalised",
    "status": "open",
    "kind": "partial",
    "refs": [
-    "q.nocloning-hilbert"
+    "q.fd-from-ml"
    ],
    "lit": [],
    "updated": "2026-11-22"

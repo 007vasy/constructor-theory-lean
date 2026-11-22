@@ -12,6 +12,7 @@ public import ConstructorTheory.Models
 public import ConstructorTheory.FormalisationGap
 public import ConstructorTheory.QNumber
 public import ConstructorTheory.CTRestatement
+public import ConstructorTheory.ClosingTheGap
 
 /-!
 # Constructor theory

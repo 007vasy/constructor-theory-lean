@@ -1,3 +1,4 @@
 /.lake
 labyrinth/dashboard/index.html
 labyrinth/dashboard/data.json
+__pycache__/

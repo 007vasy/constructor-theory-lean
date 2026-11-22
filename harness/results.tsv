@@ -27,3 +27,31 @@ timestamp	commit	item	status	axioms	note
 2026-11-22T04:27:26Z	local	th.second-law-impotence	OK	propext	standard axioms only | CT restatements + CTRestatement.lean, box
 2026-11-22T04:27:26Z	local	th.ct-irreversibility	OK	propext	standard axioms only | CT restatements + CTRestatement.lean, box
 2026-11-22T04:27:26Z	local	th.ct-irreversibility-example	OK	Classical.choice,Quot.sound,propext	standard axioms only | CT restatements + CTRestatement.lean, box
+2026-11-22T06:58:54Z	6321c67fe6d6	table-vs-lean	OK	-	Python table == Lean catalogue | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.catalogue-counts	OK	propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.no-continuum-iv	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.droplet	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.distinguish	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.distinguish-converse	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.pauli-noncommute	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.no-joint-sharp	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.classical-copying	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.no-superinformation	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.conservation-impossible	OK	none	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.second-law-impotence	OK	propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.ct-irreversibility	OK	propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.ct-irreversibility-example	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.breakdown-exact	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.fd-no-continuum	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.fd-iff-discrete	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.continuum-violates-fd	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.ladder-fd	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.no-cloning	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.qclone-impossible	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.qubit-basis-clone	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.qubit-rotated-clone	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.qubit-nonorth	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.copying-law-breaks	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.qubit-superinformation	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.planck-ceiling	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T06:58:54Z	6321c67fe6d6	th.planck-freeze	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor

@@ -77,7 +77,56 @@ LEAN_THEOREMS = [
      "sigma_x sigma_z != sigma_z sigma_x over C (ConstructorTheory/QNumber.lean)."),
     ("th.no-joint-sharp", "no_common_eigenvector", "No state is sharp for both sigma_x and sigma_z",
      "No non-zero vector in C^2 is an eigenvector of both sigma_x and sigma_z (ConstructorTheory/QNumber.lean)."),
+    ("th.classical-copying", "functional_every_variable_info", "Classical copying (CT)",
+     "In the deterministic theory every variable is an information variable: its cloning task is possible (ConstructorTheory/CTRestatement.lean)."),
+    ("th.no-superinformation", "functional_no_superinformation", "No superinformation in the deterministic theory",
+     "The deterministic (classical) theory has no superinformation medium; no-cloning and complementarity need non-classical constructors (CTRestatement.lean)."),
+    ("th.conservation-impossible", "conserved_change_impossible_both", "Changing a conserved quantity is impossible (toy principle VIII)",
+     "In a toy thermodynamic theory whose constructors conserve U, x -> y and y -> x are both impossible when U differs (CTRestatement.lean)."),
+    ("th.second-law-impotence", "monotone_decrease_impossible", "Decreasing the monotone is impossible (toy law of impotence)",
+     "In the toy thermodynamic theory, x -> y is impossible when the entropy-like monotone is strictly lower on y (CTRestatement.lean)."),
+    ("th.ct-irreversibility", "irreversible_of", "Constructor-based irreversibility (toy)",
+     "A task can be possible while its transpose is impossible (CTRestatement.lean)."),
+    ("th.ct-irreversibility-example", "thermo_irreversible_example", "Irreversibility is not vacuous (two-state example)",
+     "On Bool, false -> true is possible and true -> false impossible in the toy thermodynamic theory (CTRestatement.lean)."),
 ]
+
+# Lean file per theorem (default: FormalisationGap.lean)
+LEAN_FILE = {
+    "pauliX_mul_pauliZ_ne": "ConstructorTheory/QNumber.lean",
+    "no_common_eigenvector": "ConstructorTheory/QNumber.lean",
+    **{n: "ConstructorTheory/CTRestatement.lean" for n in (
+        "functional_every_variable_info", "functional_no_superinformation",
+        "conserved_change_impossible_both", "monotone_decrease_impossible", "irreversible_of",
+        "thermo_irreversible_example")},
+}
+
+# Constructor-theoretic restatements (docs/formalisation-gap/CT_RESTATEMENT.md):
+# slug -> (tag, short statement, source or reasoning)
+CT = {
+    "newton": ("Published", "Preparing position and momentum both sharp is impossible (superinformation)", "Deutsch-Marletto 2015, arXiv:1405.5563"),
+    "liouville": ("Derived", "No phase-space-point attribute can be prepared or measured", "from row newton; hybrid argument Marletto-Vedral arXiv:1703.04325"),
+    "tunnelling": ("Not expressible", "No CT task statement for finite-probability transmission", "CT_RESTATEMENT.md row 3"),
+    "rayleigh-jeans": ("Conjecture", "Changing a mode's energy by less than hbar w is impossible", "principle VIII (Marletto arXiv:1608.02625) + quantised is-like classes (ours)"),
+    "equipartition": ("Conjecture", "A mode with hbar w >> kT cannot be thermally excited by sub-quantum transfers", "as rayleigh-jeans"),
+    "larmor": ("Conjecture", "Lowering a bound electron below its ground state is impossible", "principle VIII + lowest is-like class (ours)"),
+    "photoelectric": ("Conjecture", "Ejecting an electron with h nu < phi is impossible at any intensity", "principle VIII + quantised exchange (ours)"),
+    "vacuum": ("Derived", "Preparing a field mode with E and B both sharp is impossible", "D-M 2015 superinformation applied to field quadratures"),
+    "dulong-petit": ("Conjecture", "As equipartition, for phonon modes", "as rayleigh-jeans"),
+    "maxwell-boltzmann": ("Conjecture", "Distinguishing a configuration of identical particles from its swap is impossible", "ours; no CT derivation of BE/FD"),
+    "gibbs": ("Conjecture", "No work can be extracted from mixing identical gases (identity task)", "Marletto arXiv:2009.04588 + identical particles (ours)"),
+    "drude": ("Not expressible", "Conductivity is a coefficient, not a task", "CT_RESTATEMENT.md row 12"),
+    "magnetism": ("Not expressible", "No CT restatement of magnetisation", "CT_RESTATEMENT.md row 13"),
+    "third-law": ("Conjecture", "Cooling to the ground state in finitely many steps is impossible", "law of impotence in Marletto's style (ours)"),
+    "fourier": ("Published", "Moving heat cold -> hot with no other change is impossible (second-law core)", "Marletto arXiv:1608.02625; PRL 128, 080401"),
+    "navier-stokes": ("Derived", "A finite droplet has no continuum information variable", "Lean: no_continuum_info_variable_of_finite"),
+    "einstein": ("Published", "If gravity can locally entangle two masses, it is non-classical", "Marletto-Vedral PRL 119, 240402; PRD 102, 086012"),
+    "qft-uv": ("Not expressible", "No CT restatement of UV divergences", "CT_RESTATEMENT.md row 18"),
+    "spin": ("Published", "Preparing S_x and S_z both sharp is impossible", "D-M 2015; Lean no_common_eigenvector"),
+    "bell": ("Published", "Locally inaccessible information (entanglement) exists", "D-M 2015; Deutsch 2013 locality"),
+    "measurement": ("Published", "Measuring without perturbing a complementary variable is impossible", "D-M 2015; Marletto 2016 probability"),
+    "copying": ("Published", "Cloning a superinformation medium is impossible; single variables can be copied", "D-M 2015; Lean functional_no_superinformation (classical half)"),
+}
 
 # q-number restatements (docs/formalisation-gap/QNUMBER.md): slug -> (status, form, short statement)
 QNUMBER = {
@@ -157,9 +206,9 @@ def build():
             "title": title, "statement": stmt,
             "note": f"Lean: ConstructorTheory.{lean}. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
             "review": {"state": "unreviewed"},
-            "evidence": ["ConstructorTheory/FormalisationGap.lean", "harness/results.tsv"],
+            "evidence": [LEAN_FILE.get(lean, "ConstructorTheory/FormalisationGap.lean"), "harness/results.tsv"],
             "links": [{"to": "src.lean-repo", "rel": "cites"}],
-            "where": ["ConstructorTheory/FormalisationGap.lean"], "created": TODAY, "updated": TODAY,
+            "where": [LEAN_FILE.get(lean, "ConstructorTheory/FormalisationGap.lean")], "created": TODAY, "updated": TODAY,
         })
     nodes += [
         {"id": "k.ben-thesis", "kind": "conjecture", "tier": "T5", "status": "open",
@@ -211,10 +260,28 @@ def build():
             base.update(kind="conjecture", tier="T5", status="open",
                         test="BMV: observe (or bound) gravitationally induced entanglement between two masses in superposition.")
         nodes.append(base)
+    for law in LAWS:
+        slug = law[0]
+        tag, stmt, src = CT[slug]
+        base = {"id": f"ct.{slug}", "title": f"CT form: {law[1]} [{tag}]",
+                "statement": stmt + ". Quantitative content of the law is lost in the CT form.",
+                "evidence": [src, "docs/formalisation-gap/CT_LITERATURE.md"],
+                "links": [{"to": f"x.{slug}", "rel": "modifies"}, {"to": "k.ben-thesis", "rel": "supports"}],
+                "where": ["docs/formalisation-gap/CT_RESTATEMENT.md"], "created": TODAY, "updated": TODAY}
+        if tag == "Published":
+            base.update(kind="theorem", tier="T1", status="established")
+        elif tag == "Derived":
+            base.update(kind="theorem", tier="T2", status="established", review={"state": "unreviewed"})
+        elif tag == "Conjecture":
+            base.update(kind="conjecture", tier="T5", status="open",
+                        test="Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible.")
+        else:
+            base.update(kind="question", status="open")
+        nodes.append(base)
     knowledge = {
         "schema": 1,
         "meta": {"title": "The formalisation gap", "eyebrow": "constructor-theory-lean · labyrinth map",
-                 "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), Lean results (T2)."},
+                 "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."},
         "nodes": nodes,
     }
     sota = {
@@ -233,6 +300,8 @@ def build():
     (LAB / "knowledge.json").write_text(json.dumps(knowledge, indent=1, ensure_ascii=False) + "\n")
     (LAB / "sota.json").write_text(json.dumps(sota, indent=1, ensure_ascii=False) + "\n")
     assert set(QNUMBER) == {l[0] for l in LAWS}, "every law needs a q-number row"
+    assert set(CT) == {l[0] for l in LAWS}, "every law needs a CT row"
+    print("CT tags", dict(Counter(v[0] for v in CT.values())))
     print("q-number status", dict(Counter(v[0] for v in QNUMBER.values())))
     counts = Counter(c for l in LAWS for c in l[5])
     print("laws", len(LAWS), dict(counts))

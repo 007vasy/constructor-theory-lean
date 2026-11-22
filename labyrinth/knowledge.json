@@ -3,7 +3,7 @@
  "meta": {
   "title": "The formalisation gap",
   "eyebrow": "constructor-theory-lean · labyrinth map",
-  "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), Lean results (T2)."
+  "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."
  },
  "nodes": [
   {
@@ -823,7 +823,7 @@
     "state": "unreviewed"
    },
    "evidence": [
-    "ConstructorTheory/FormalisationGap.lean",
+    "ConstructorTheory/QNumber.lean",
     "harness/results.tsv"
    ],
    "links": [
@@ -833,7 +833,7 @@
     }
    ],
    "where": [
-    "ConstructorTheory/FormalisationGap.lean"
+    "ConstructorTheory/QNumber.lean"
    ],
    "created": "2026-11-22",
    "updated": "2026-11-22"
@@ -850,7 +850,7 @@
     "state": "unreviewed"
    },
    "evidence": [
-    "ConstructorTheory/FormalisationGap.lean",
+    "ConstructorTheory/QNumber.lean",
     "harness/results.tsv"
    ],
    "links": [
@@ -860,7 +860,169 @@
     }
    ],
    "where": [
-    "ConstructorTheory/FormalisationGap.lean"
+    "ConstructorTheory/QNumber.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.classical-copying",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Classical copying (CT)",
+   "statement": "In the deterministic theory every variable is an information variable: its cloning task is possible (ConstructorTheory/CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.functional_every_variable_info. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-superinformation",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "No superinformation in the deterministic theory",
+   "statement": "The deterministic (classical) theory has no superinformation medium; no-cloning and complementarity need non-classical constructors (CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.functional_no_superinformation. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.conservation-impossible",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Changing a conserved quantity is impossible (toy principle VIII)",
+   "statement": "In a toy thermodynamic theory whose constructors conserve U, x -> y and y -> x are both impossible when U differs (CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.conserved_change_impossible_both. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.second-law-impotence",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Decreasing the monotone is impossible (toy law of impotence)",
+   "statement": "In the toy thermodynamic theory, x -> y is impossible when the entropy-like monotone is strictly lower on y (CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.monotone_decrease_impossible. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Constructor-based irreversibility (toy)",
+   "statement": "A task can be possible while its transpose is impossible (CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.irreversible_of. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility-example",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Irreversibility is not vacuous (two-state example)",
+   "statement": "On Bool, false -> true is possible and true -> false impossible in the toy thermodynamic theory (CTRestatement.lean).",
+   "note": "Lean: ConstructorTheory.thermo_irreversible_example. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/CTRestatement.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/CTRestatement.lean"
    ],
    "created": "2026-11-22",
    "updated": "2026-11-22"
@@ -1381,6 +1543,613 @@
    "updated": "2026-11-22",
    "kind": "question",
    "status": "partial"
+  },
+  {
+   "id": "ct.newton",
+   "title": "CT form: Newton/Hamilton trajectories [Published]",
+   "statement": "Preparing position and momentum both sharp is impossible (superinformation). Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Deutsch-Marletto 2015, arXiv:1405.5563",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.newton",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.liouville",
+   "title": "CT form: Liouville phase-space density [Derived]",
+   "statement": "No phase-space-point attribute can be prepared or measured. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "from row newton; hybrid argument Marletto-Vedral arXiv:1703.04325",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.liouville",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "review": {
+    "state": "unreviewed"
+   }
+  },
+  {
+   "id": "ct.rayleigh-jeans",
+   "title": "CT form: Rayleigh-Jeans law [Conjecture]",
+   "statement": "Changing a mode's energy by less than hbar w is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "principle VIII (Marletto arXiv:1608.02625) + quantised is-like classes (ours)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.rayleigh-jeans",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.equipartition",
+   "title": "CT form: Equipartition theorem [Conjecture]",
+   "statement": "A mode with hbar w >> kT cannot be thermally excited by sub-quantum transfers. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "as rayleigh-jeans",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.equipartition",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.dulong-petit",
+   "title": "CT form: Dulong-Petit law [Conjecture]",
+   "statement": "As equipartition, for phonon modes. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "as rayleigh-jeans",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.dulong-petit",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.larmor",
+   "title": "CT form: Larmor radiation / classical atom [Conjecture]",
+   "statement": "Lowering a bound electron below its ground state is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "principle VIII + lowest is-like class (ours)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.larmor",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.photoelectric",
+   "title": "CT form: Wien/Lenard photoelectric expectation [Conjecture]",
+   "statement": "Ejecting an electron with h nu < phi is impossible at any intensity. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "principle VIII + quantised exchange (ours)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.photoelectric",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.maxwell-boltzmann",
+   "title": "CT form: Maxwell-Boltzmann statistics [Conjecture]",
+   "statement": "Distinguishing a configuration of identical particles from its swap is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "ours; no CT derivation of BE/FD",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.maxwell-boltzmann",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.gibbs",
+   "title": "CT form: Gibbs entropy without 1/N! [Conjecture]",
+   "statement": "No work can be extracted from mixing identical gases (identity task). Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Marletto arXiv:2009.04588 + identical particles (ours)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.gibbs",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.drude",
+   "title": "CT form: Drude conductivity at low T [Not expressible]",
+   "statement": "Conductivity is a coefficient, not a task. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "CT_RESTATEMENT.md row 12",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.drude",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "open"
+  },
+  {
+   "id": "ct.magnetism",
+   "title": "CT form: Curie law / Bohr-van Leeuwen [Not expressible]",
+   "statement": "No CT restatement of magnetisation. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "CT_RESTATEMENT.md row 13",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.magnetism",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "open"
+  },
+  {
+   "id": "ct.spin",
+   "title": "CT form: Classical spin (Stern-Gerlach) [Published]",
+   "statement": "Preparing S_x and S_z both sharp is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "D-M 2015; Lean no_common_eigenvector",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.spin",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.vacuum",
+   "title": "CT form: Classical vacuum (no Casimir) [Derived]",
+   "statement": "Preparing a field mode with E and B both sharp is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "D-M 2015 superinformation applied to field quadratures",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.vacuum",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "review": {
+    "state": "unreviewed"
+   }
+  },
+  {
+   "id": "ct.fourier",
+   "title": "CT form: Fourier heat law at nanoscale [Published]",
+   "statement": "Moving heat cold -> hot with no other change is impossible (second-law core). Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Marletto arXiv:1608.02625; PRL 128, 080401",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.fourier",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.navier-stokes",
+   "title": "CT form: Navier-Stokes at pinch-off/superfluid [Derived]",
+   "statement": "A finite droplet has no continuum information variable. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Lean: no_continuum_info_variable_of_finite",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.navier-stokes",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "review": {
+    "state": "unreviewed"
+   }
+  },
+  {
+   "id": "ct.third-law",
+   "title": "CT form: Third law vs classical entropy [Conjecture]",
+   "statement": "Cooling to the ground state in finitely many steps is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "law of impotence in Marletto's style (ours)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.third-law",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "test": "Derive the impossibility from CT principles alone (no Hilbert space), or exhibit a CT-compliant theory where the task is possible."
+  },
+  {
+   "id": "ct.bell",
+   "title": "CT form: Bell local hidden variables [Published]",
+   "statement": "Locally inaccessible information (entanglement) exists. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "D-M 2015; Deutsch 2013 locality",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.bell",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.measurement",
+   "title": "CT form: Classical measurement (no disturbance) [Published]",
+   "statement": "Measuring without perturbing a complementary variable is impossible. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "D-M 2015; Marletto 2016 probability",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.measurement",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.copying",
+   "title": "CT form: Universal copying of information [Published]",
+   "statement": "Cloning a superinformation medium is impossible; single variables can be copied. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "D-M 2015; Lean functional_no_superinformation (classical half)",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.copying",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.tunnelling",
+   "title": "CT form: Classical tunnelling barrier [Not expressible]",
+   "statement": "No CT task statement for finite-probability transmission. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "CT_RESTATEMENT.md row 3",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.tunnelling",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "open"
+  },
+  {
+   "id": "ct.einstein",
+   "title": "CT form: Einstein field equations at Planck scale [Published]",
+   "statement": "If gravity can locally entangle two masses, it is non-classical. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Marletto-Vedral PRL 119, 240402; PRD 102, 086012",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.einstein",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
+  },
+  {
+   "id": "ct.qft-uv",
+   "title": "CT form: QFT without cutoff (UV divergences) [Not expressible]",
+   "statement": "No CT restatement of UV divergences. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "CT_RESTATEMENT.md row 18",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.qft-uv",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "question",
+   "status": "open"
   }
  ]
 }

@@ -97,6 +97,84 @@
    "updated": "2026-11-22"
   },
   {
+   "id": "th.classical-copying",
+   "group": "Formalised",
+   "cls": "Classical copying (CT)",
+   "result": "In the deterministic theory every variable is an information variable: its cloning task is possible (ConstructorTheory/CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.classical-copying"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-superinformation",
+   "group": "Formalised",
+   "cls": "No superinformation in the deterministic theory",
+   "result": "The deterministic (classical) theory has no superinformation medium; no-cloning and complementarity need non-classical constructors (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-superinformation"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.conservation-impossible",
+   "group": "Formalised",
+   "cls": "Changing a conserved quantity is impossible (toy principle VIII)",
+   "result": "In a toy thermodynamic theory whose constructors conserve U, x -> y and y -> x are both impossible when U differs (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.conservation-impossible"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.second-law-impotence",
+   "group": "Formalised",
+   "cls": "Decreasing the monotone is impossible (toy law of impotence)",
+   "result": "In the toy thermodynamic theory, x -> y is impossible when the entropy-like monotone is strictly lower on y (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.second-law-impotence"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility",
+   "group": "Formalised",
+   "cls": "Constructor-based irreversibility (toy)",
+   "result": "A task can be possible while its transpose is impossible (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.ct-irreversibility"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.ct-irreversibility-example",
+   "group": "Formalised",
+   "cls": "Irreversibility is not vacuous (two-state example)",
+   "result": "On Bool, false -> true is possible and true -> false impossible in the toy thermodynamic theory (CTRestatement.lean).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.ct-irreversibility-example"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
    "id": "open-nocloning",
    "group": "Open",
    "cls": "quantum no-cloning",

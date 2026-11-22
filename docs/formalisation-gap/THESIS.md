@@ -82,6 +82,18 @@ In the map this is `k.ben-thesis`, a T5 conjecture with a test. Each claim below
   formalism. Marletto & Vedral's 2026 dynamical-consistency paper (ROADMAP item 3) is one step
   in that direction.
 
+## 4b. Restating the laws in constructor theory
+
+- **[fact]** Published constructor-theory papers restate the qualitative core of 7 of the 22
+  laws as impossible tasks: no-cloning, complementarity, measurement disturbance, locally
+  inaccessible information, the gravity witness, and the second law/irreversibility. Three more
+  follow in a few lines. Eight are our conjectures (mostly the energy-quantisation rows) and four
+  can't be expressed yet. See `CT_RESTATEMENT.md` and `CT_LITERATURE.md`.
+- **[fact]** In every row the CT statement loses the law's numbers.
+- **[interpretation]** Where CT can speak, it is always the dynamical description that fails and
+  the impossible-task statement that survives. That is the thesis in its sharpest form: the
+  mathematics was wrong because it encoded tasks as possible that are physically impossible.
+
 ## How to break this thesis (the T5 test)
 
 Find a classical law whose quantum-level failure can't be traced to any of P1–P6, or one where

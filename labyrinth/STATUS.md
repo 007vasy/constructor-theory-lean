@@ -1,9 +1,9 @@
 # Labyrinth status
 
-Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
+Generated 2026-11-22T04:27:26Z by `labyrinth/lab.py build`. Do not edit by hand.
 
 
-## Conjectures (8)
+## Conjectures (16)
 
 - **P1 Continuum** [`k.cont`, open] Energy and modes are infinitely divisible. Fails where hbar*omega >~ k_B T, or action ~ hbar.
 - **P2 Joint sharpness** [`k.sharp`, open] Every observable has a sharp value at once (phase-space points). Fails because [q,p] = i*hbar.
@@ -13,8 +13,16 @@ Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **P6 Smooth at all scales** [`k.smooth`, open] A differential (field) description holds down to arbitrarily small scales. Fails: divergences.
 - **Ben's thesis: the breakdown shows the description is incorrect** [`k.ben-thesis`, open] Classical laws are false-but-emergent approximations; the error lives in ontological assumptions encoded in the mathematics (continuum, joint sharpness, unlimited distinguishability), not in the calculus.
 - **q-number form: Einstein field equations at Planck scale [Speculative, SC]** [`qn.einstein`, open] semiclassical G = 8 pi G <T> vs quantised metric; BMV decides
+- **CT form: Rayleigh-Jeans law [Conjecture]** [`ct.rayleigh-jeans`, open] Changing a mode's energy by less than hbar w is impossible. Quantitative content of the law is lost in the CT form.
+- **CT form: Equipartition theorem [Conjecture]** [`ct.equipartition`, open] A mode with hbar w >> kT cannot be thermally excited by sub-quantum transfers. Quantitative content of the law is lost in the CT form.
+- **CT form: Dulong-Petit law [Conjecture]** [`ct.dulong-petit`, open] As equipartition, for phonon modes. Quantitative content of the law is lost in the CT form.
+- **CT form: Larmor radiation / classical atom [Conjecture]** [`ct.larmor`, open] Lowering a bound electron below its ground state is impossible. Quantitative content of the law is lost in the CT form.
+- **CT form: Wien/Lenard photoelectric expectation [Conjecture]** [`ct.photoelectric`, open] Ejecting an electron with h nu < phi is impossible at any intensity. Quantitative content of the law is lost in the CT form.
+- **CT form: Maxwell-Boltzmann statistics [Conjecture]** [`ct.maxwell-boltzmann`, open] Distinguishing a configuration of identical particles from its swap is impossible. Quantitative content of the law is lost in the CT form.
+- **CT form: Gibbs entropy without 1/N! [Conjecture]** [`ct.gibbs`, open] No work can be extracted from mixing identical gases (identity task). Quantitative content of the law is lost in the CT form.
+- **CT form: Third law vs classical entropy [Conjecture]** [`ct.third-law`, open] Cooling to the ground state in finitely many steps is impossible. Quantitative content of the law is lost in the CT form.
 
-## Open doors (questions) (6)
+## Open doors (questions) (10)
 
 - **Formalise quantum no-cloning in the task vocabulary** [`q.nocloning-hilbert`, open] Prove 'clone every state of a qubit' impossible in a Hilbert-space Theory model (Mathlib inner-product spaces).
 - **CHSH <= 2 for local models, Tsirelson for quantum** [`q.bell`, open] Formalise the classical CHSH bound (finite, decidable) and state the quantum violation.
@@ -22,6 +30,10 @@ Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **q-number form: Fourier heat law at nanoscale [Partial, SC]** [`qn.fourier`, partial] Green-Kubo exact, phonon Boltzmann SC; local law not derived
 - **q-number form: Navier-Stokes at pinch-off/superfluid [Partial, SC]** [`qn.navier-stokes`, partial] operator conservation laws exact; NS closure not derived; GP mean-field
 - **q-number form: QFT without cutoff (UV divergences) [Partial, FQ]** [`qn.qft-uv`, partial] renormalised EFT; UV completion unknown
+- **CT form: Drude conductivity at low T [Not expressible]** [`ct.drude`, open] Conductivity is a coefficient, not a task. Quantitative content of the law is lost in the CT form.
+- **CT form: Curie law / Bohr-van Leeuwen [Not expressible]** [`ct.magnetism`, open] No CT restatement of magnetisation. Quantitative content of the law is lost in the CT form.
+- **CT form: Classical tunnelling barrier [Not expressible]** [`ct.tunnelling`, open] No CT task statement for finite-probability transmission. Quantitative content of the law is lost in the CT form.
+- **CT form: QFT without cutoff (UV divergences) [Not expressible]** [`ct.qft-uv`, open] No CT restatement of UV divergences. Quantitative content of the law is lost in the CT form.
 
 ## Hunches (speculation, not claims) (1)
 
@@ -52,7 +64,7 @@ Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
 - **Einstein field equations at Planck scale** [`x.einstein`, refuted] Classical law, taken as exact. Fails in regime: singularities; l_P. Replaced by: unknown (quantum gravity); BMV tests.
 - **QFT without cutoff (UV divergences)** [`x.qft-uv`, refuted] Classical law, taken as exact. Fails in regime: short distances. Replaced by: renormalisation; EFT.
 
-## Recent events (8 total)
+## Recent events (11 total)
 
 - 2026-11-22T03:10 · documented · Catalogue of 22 classical laws that fail at the quantum level, each with its failed assumption (backfilled)
 - 2026-11-22T03:12 · proposed · Six breakdown patterns P1-P6 proposed as the common cause (backfilled)
@@ -62,3 +74,6 @@ Generated 2026-11-22T03:45:22Z by `labyrinth/lab.py build`. Do not edit by hand.
 - 2026-11-22T03:29 · question · Open doors: Hilbert-space no-cloning, CHSH/Tsirelson, discrete-mode energy vs equipartition
 - 2026-11-22T03:31 · monitor · run_checks at local: 6/6 OK (first run of the harness, box)
 - 2026-11-22T03:45 · monitor · run_checks at local: 8/8 OK (q-number restatements + QNumber.lean, box)
+- 2026-11-22T04:27 · literature · Constructor-theory restatement literature: 19 papers verified on arXiv/journals; 22 laws tagged 7 Published, 3 Derived, 8 Conjecture, 4 Not expressible (CT_LITERATURE.md, CT_RESTATEMENT.md)
+- 2026-11-22T04:27 · proved · CTRestatement.lean: no superinformation in the deterministic theory; toy principle VIII and law of impotence; constructor-based irreversibility with a two-state example
+- 2026-11-22T04:27 · monitor · run_checks at local: 14/14 OK (CT restatements + CTRestatement.lean, box)

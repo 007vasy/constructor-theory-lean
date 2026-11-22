@@ -9,6 +9,7 @@ public import ConstructorTheory.Basic
 public import ConstructorTheory.Algebra
 public import ConstructorTheory.Possibility
 public import ConstructorTheory.Models
+public import ConstructorTheory.FormalisationGap
 
 /-!
 # Constructor theory

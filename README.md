@@ -78,6 +78,8 @@ Continuous integration (`.github/workflows/ci.yml`) runs the same build with
 | `ConstructorTheory/Algebra.lean` | Theorems about that algebra. No notion of possibility. |
 | `ConstructorTheory/Possibility.lean` | Constructors, `Possible` / `Impossible`, composition principles, and the theorems that use them. |
 | `ConstructorTheory/Models.lean` | Consistency and independence models. |
+| `ConstructorTheory/FormalisationGap.lean` | The formalisation gap: breakdown-assumption table, finite substrate vs continuum (Kuypers' droplet), distinguishability needs disjointness. |
+| `docs/formalisation-gap/` | The formalisation gap: catalogue of 22 classical laws that fail at the quantum level, the common pattern, method (ecdsa.fail setup), sources. |
 | `NOTES.md` | Modelling choices and the milestone 2 proposal. |
 | `MAPPING.md` | Each definition and theorem against a sentence from the source papers. |
 

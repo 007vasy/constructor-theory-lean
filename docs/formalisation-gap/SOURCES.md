@@ -7,6 +7,14 @@ Opened this session (22 Nov 2026):
 - Sam Kuypers, "Seeing Isn't Believing", Sam's Newsletter, 13 Jul 2025: https://samuelkuypers.substack.com/p/seeing-isnt-believing
 - David Wallace, "The quantum theory of fields" (2018 preprint): https://philsci-archive.pitt.edu/15296/1/qm-continuum%20revised.pdf
 
+Harness and participant sources (opened 22 Nov 2026):
+- Bartosz Naskręcki on X: https://x.com/nasqret; GitHub: https://github.com/nasqret
+- Zero Knowledge episode 416, "When Math Meets Auto Research with Bartosz Naskręcki" (11 Nov 2026): https://zeroknowledge.fm/podcast/416/
+- labyrinth-exploration (MIT): https://github.com/nasqret/labyrinth-exploration (commit 019a93d; `labyrinth/lab.py` vendored from it)
+- His ecdsa.fail submission notes, e.g. https://github.com/Layr-Labs/ecdsafail-challenge/pull/2470 and /pull/3215; official scores from https://api.ecdsa.fail/api/benchmarks/1ffb695a-309b-46b6-a728-2f97d8c7be74/submissions
+- Storm skills (MIT), `nasqret-playbook` and CREDITS.md: https://github.com/odinfree/storm-ecdsa-harness
+- Eigen Labs, "From a Hidden Quantum Circuit to Open Autoresearch: The ECDSA.fail Story" (10 Sep 2026): https://www.eigenlabs.org/blog/open-autoresearch-the-ecdsa-fail-story/
+
 Standard references for the catalogue (bracket numbers match `CATALOGUE.md`):
 1. W. Heisenberg, Z. Phys. 43, 172 (1927), uncertainty relation; E. Schrödinger, Ann. Phys. 79, 361 (1926).
 2. G. Gamow, Z. Phys. 51, 204 (1928), alpha decay by tunnelling.

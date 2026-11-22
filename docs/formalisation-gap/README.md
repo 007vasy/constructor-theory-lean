@@ -1,11 +1,15 @@
 # The formalisation gap
 
 Ben's question: *which physics equations break down at the quantum level, and why?* This
-answers it using the ecdsa.fail benchmark setup, with Sam Kuypers' drop-of-water essay as
-the worked example.
+answers it with the harness of Bartosz Naskręcki (@nasqret, an ecdsa.fail leaderboard
+participant), with Sam Kuypers' drop-of-water essay as the worked example.
 
-- `METHOD.md`: what ecdsa.fail is and how its harness/gates/log setup maps onto the question
+- `THESIS.md`: Ben's thesis, that the breakdown shows the mathematical description is incorrect, developed with fact/interpretation labels
+- `METHOD.md`: who Bartosz is, his setup (submission notes, labyrinth-exploration, sweeps), and how the catalogue is run through it
 - `CATALOGUE.md`: 22 classical laws, each with regime, replacement, failed assumption and tags
 - `PATTERN.md`: the six breakdown patterns, the single underlying reason, Kuypers' droplet, and the constructor-theory reading
 - `SOURCES.md`: links and references
-- Lean: `ConstructorTheory/FormalisationGap.lean` (no `sorry`, no axioms)
+- Lean: `ConstructorTheory/FormalisationGap.lean` (no `sorry`, no new axioms)
+- Harness: `harness/` (`build_map.py`, `run_checks.py`, `results.tsv`) and the map in `labyrinth/` (`knowledge.json`, `events.jsonl`, `sota.json`, `STATUS.md`)
+
+Run it with `lake build && python3 harness/run_checks.py --note "what I tried"`.

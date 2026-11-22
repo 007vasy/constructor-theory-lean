@@ -1,5 +1,9 @@
 # The formalisation gap — the common pattern: why classical laws break down
 
+See `THESIS.md` for Ben's thesis, that the breakdown shows the mathematical description itself
+is incorrect, and how it extends to quantum theory. The patterns below are T5 conjectures in the
+labyrinth map (`labyrinth/knowledge.json`, nodes `k.cont` to `k.smooth`), each with a test.
+
 **Short answer.** Classical laws don't fail because their *dynamics* are wrong in some ad hoc
 way. They fail because they all share one hidden model of **what a physical state is**: a point
 in a continuum, where every quantity has a sharp value, everything is labelled, and any state
@@ -78,7 +82,7 @@ non-commutative in what can be *jointly sharp* (P2), and restricted in what can 
 underneath without giving up locality. P6 is the same failure seen from the continuum side.
 The classical equation assumed infinite resolution and blows up where resolution runs out.
 
-Put in Ben's ecdsa.fail language: every classical law skipped the same validity gate. It
+Put in ecdsa.fail terms: every classical law skipped the same validity gate. It
 assumed **unlimited distinguishability** (sharp, copyable, infinitely divisible states), and
 nature's harness rejects that.
 

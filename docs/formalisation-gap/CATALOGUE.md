@@ -1,9 +1,10 @@
 # The formalisation gap — catalogue: classical laws that break down at the quantum level
 
-22 entries. Each is run like one row of an [ecdsa.fail](https://ecdsa.fail) `results.tsv`
-(see `METHOD.md`): the classical law is the *candidate*, the experiment that refutes it is
-the *validator*, and the row records **OK/FAIL**, the regime, the replacement, and a note
-naming the classical assumption that failed. Tags use the six codes in `PATTERN.md`:
+22 entries, run through Bartosz Naskręcki's harness (see `METHOD.md`). Each classical law
+is a **dead end** in the labyrinth map (`x.<law>` in `labyrinth/knowledge.json`), refuted by the
+cited experiment, with a one-line **lesson** naming the classical assumption that failed. The
+table here and the Lean `catalogue` are two independent encodings, cross-checked on every
+run of `harness/run_checks.py`. Tags use the six codes in `PATTERN.md`:
 
 `CONT` continuum / infinite divisibility · `SHARP` joint sharpness of all observables ·
 `LOCAL` local realism · `DIST` universal distinguishability and copying ·

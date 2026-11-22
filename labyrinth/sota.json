@@ -1,0 +1,87 @@
+{
+ "about": "Best formal result per question in the formalisation gap, with history.",
+ "groups": [
+  "Formalised",
+  "Open"
+ ],
+ "entries": [
+  {
+   "id": "th.catalogue-counts",
+   "group": "Formalised",
+   "cls": "Tag counts of the catalogue",
+   "result": "In our tagging: continuum 14, joint sharpness 9, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 22).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.catalogue-counts"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-continuum-iv",
+   "group": "Formalised",
+   "cls": "No continuum information variable on a finite substrate",
+   "result": "A substrate with finitely many states has no family of non-empty pairwise-disjoint attributes indexed by R.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-continuum-iv"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.droplet",
+   "group": "Formalised",
+   "cls": "Kuypers' droplet (toy)",
+   "result": "Any real-valued quantity on a finite substrate misses every open interval: a finite-atom neck cannot sweep a continuum of radii.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.droplet"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.distinguish",
+   "group": "Formalised",
+   "cls": "Overlapping attributes cannot be distinguished",
+   "result": "In the deterministic theory, sending x and y to disjoint outputs is impossible if x and y overlap.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.distinguish"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.distinguish-converse",
+   "group": "Formalised",
+   "cls": "Disjoint attributes can be distinguished",
+   "result": "In the deterministic theory, disjoint x, y with inhabited outputs can be sent to disjoint outputs.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.distinguish-converse"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "open-nocloning",
+   "group": "Open",
+   "cls": "quantum no-cloning",
+   "result": "not formalised",
+   "status": "open",
+   "kind": "partial",
+   "refs": [
+    "q.nocloning-hilbert"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  }
+ ]
+}

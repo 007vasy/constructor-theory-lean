@@ -113,7 +113,7 @@ prompt_for() {  # $1 name, $2 lane, $3 round
 }
 
 agent_loop() {  # $1 index
-  local name="a$1-${LANES[$1]}" lane="${LANES[$1]}" round=0 dir="$WT/a$1-${LANES[$1]}"
+  local name="a$1-${LANES[$1]}" lane="${LANES[$1]}" round=0 dir="$WT/a$1-${LANES[$1]}" fails=0
   while ! stopped; do
     round=$((round+1)); local out="$LOGS/$name-r$round.json" pf="$LOGS/$name-r$round.prompt.md"
     prompt_for "$name" "$lane" "$round" > "$pf"
@@ -121,7 +121,7 @@ agent_loop() {  # $1 index
     # A fresh session every round keeps prompts under 200k tokens (long-context pricing doubles);
     # continuity is the notes file and the board.
     ( cd "$dir" && PATH="$BIN:$PATH" timeout --kill-after=30 "$((ROUND_MIN*60))" \
-        "$GROK_BIN" --no-auto-update -p --prompt-file "$pf" --output-format json \
+        "$GROK_BIN" --no-auto-update --prompt-file "$pf" --output-format json \
         ${MODEL:+-m "$MODEL"} --max-turns "$MAX_TURNS" --sandbox ctlswarm \
         --always-approve --no-subagents --no-memory --disable-web-search \
         --deny 'Bash(git push*)' --deny 'Bash(gh *)' --deny 'Bash(curl *)' --deny 'Bash(wget *)' \
@@ -139,6 +139,13 @@ print("\t".join(map(str, [time.strftime("%FT%T"), sys.argv[2], sys.argv[3], d.ge
       d.get("num_turns", 0), u.get("total_tokens", 0), u.get("input_tokens", 0),
       u.get("cache_read_input_tokens", 0), u.get("output_tokens", 0), d.get("total_cost_usd", "")])))
 PY
+    # Failure guard: a round with no usage reported is a failure. Back off; 3 in a row stops the swarm.
+    if [ "$(tail -1 "$LEDGER" | cut -f6)" = "0" ]; then
+      fails=$((fails+1)); log "$name round $round reported no usage (failure $fails/3): $(head -c 300 "$out.err" | tr '\n' ' ')"
+      if [ "$fails" -ge 3 ]; then log "3 failed rounds in a row: STOP"; touch "$STOP"; break; fi
+      sleep 60; continue
+    fi
+    fails=0
     steward_merge "$name"
     local used; used=$(tokens_used)
     if [ "$used" -ge "$TOKEN_BUDGET" ]; then log "TOKEN_BUDGET reached ($used >= $TOKEN_BUDGET): STOP"; touch "$STOP"; fi

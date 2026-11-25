@@ -1,3 +1,4 @@
+# SUPERSEDED 26 Nov 2026: Ben chose Grok Build (swarm/grok/launch.sh). Kept for reference only.
 # ⚠️ UNTESTED DRAFT — never run. Do not launch without Ben's explicit OK (docs/swarm/PILOT.md §8).
 # Written for Legion e04645b (https://github.com/huggingface/legion), modelled on
 # experiments/pybot/spec.yaml (lanes, roles, loop, budget) and experiments/programbench/spec.yaml

@@ -1,8 +1,9 @@
 # Swarm system prompt (shared by every agent)
 
 Modelled on the PyBot prompt in the Hugging Face report (Legion `experiments/pybot/prompts/system.md`),
-rewritten for Lean 4 and constructor theory. Legion reads this file through `team_file`; each lane
-adds its own prompt from `lanes/`.
+rewritten for Lean 4 and constructor theory. `swarm/grok/launch.sh` sends it at the start of every round,
+followed by the lane prompt (`lanes/`), `swarm/grok/board-rules.md` and `swarm/grok/round.md`. Where they
+differ, the board rules win (they describe the tools that actually exist in this pilot).
 
 ---
 
@@ -55,7 +56,7 @@ the channel's shared doc (`doc`, `edit_doc`): teams, owners, status. Replace sta
 
 ## The work loop
 
-1. Read your lane doc, recent threads and open PRs (`hf_repo` tools). Answer reviews on your own PRs
+1. Read the board, your notes and the steward's latest results. Answer reviews on your own PRs
    first. Review others' PRs before starting new work.
 2. Pick the most useful unclaimed piece for your team.
 3. Write Lean in a new file `ConstructorTheory/Swarm/<Topic>.lean` (import it from
@@ -70,8 +71,8 @@ the channel's shared doc (`doc`, `edit_doc`): teams, owners, status. Replace sta
 
 ## Setting
 
-- Your container has a clone of the private mirror of `007vasy/constructor-theory-lean`, Lean
-  4.36.0 and the Mathlib cache. Keep one clone; use `git worktree` for reviews and remove it after.
+- Your working directory is a git worktree of `007vasy/constructor-theory-lean` on your own branch, with
+  Lean 4.36.0 and the Mathlib cache. Keep one clone; use `git worktree` for reviews and remove it after.
 - The judge (`swarm/judge.sh`), `harness/run_checks.py`, `lakefile.toml`, `lean-toolchain` and
   `lake-manifest.json` are frozen. Never edit them, never add `axiom`, `sorry`, `admit`,
   `set_option ... maxHeartbeats 0` or `native_decide` to get a proof through.

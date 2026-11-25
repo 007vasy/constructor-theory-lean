@@ -31,6 +31,16 @@ JUDGE PASS: build ok, run_checks 46/46 OK, base 9a191bb, head 0c9adf2
 - A theorem proved `by sorry`: `JUDGE FAIL` at check 2.
 - A branch that edits `swarm/judge.sh`: `JUDGE FAIL` at check 1.
 
+## Notes added 26 Nov 09:30 AEDT
+
+- **Bootstrapping:** when the base branch has no `swarm/judge.sh` yet (main and `next-steps` today),
+  adding the judge is allowed; editing it is refused once the base has it. In the Grok Build pilot the
+  launcher runs a frozen copy outside every agent-writable path (`$SWARM_HOME/bin/judge.sh`) against the
+  integration branch `swarm-run`.
+- **Cost on the box:** rebuilding one changed file plus the axiom audit peaked at **2.5 GB RSS** and took
+  **31 s** (measured with `getrusage`). The box has about 2.5 GB free, so judge runs are serialised
+  through one lock.
+
 ## What the judge does not catch
 
 - **Vacuous or circular theorems.** A theorem can be true because the definitions make it true.

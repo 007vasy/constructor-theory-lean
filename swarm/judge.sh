@@ -13,6 +13,8 @@ git rev-parse --verify -q "$BASE" >/dev/null || fail "base ref $BASE not found (
 # 1. Protected files: the judge, the verifier, the toolchain and the dependency pins.
 PROTECTED='^(swarm/judge\.sh|harness/run_checks\.py|lakefile\.toml|lean-toolchain|lake-manifest\.json|\.github/)'
 CHANGED="$(git diff --name-only "$BASE"...HEAD | grep -E "$PROTECTED" || true)"
+# Bootstrapping: when the base predates the judge, adding the judge itself is allowed.
+git cat-file -e "$BASE:swarm/judge.sh" 2>/dev/null || CHANGED="$(echo "$CHANGED" | grep -v '^swarm/judge\.sh$' || true)"
 [ -z "$CHANGED" ] || fail "protected files changed: $(echo $CHANGED)"
 
 # 2. No sorry / admit / new axioms in the Lean sources (comments and docstrings stripped).

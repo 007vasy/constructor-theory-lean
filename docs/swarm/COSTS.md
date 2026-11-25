@@ -1,10 +1,83 @@
-# Swarm pilot: cost estimate
+# Swarm pilot: cost estimate (Grok Build)
+
+Ben's choice (26 Nov 2026): **"Just use Grok build."** The pilot runs xAI's official `grok` CLI headless on
+the box. Prices and plan facts below were checked on **26 Nov 2026 (AEDT)**. **Nothing was bought, no key
+created, no sign-in done.**
+
+## 1. Two ways to pay
+
+| Route | How it bills | Source |
+|---|---|---|
+| **Signed in with Ben's X subscription** (`grok login`) | No per-session fee. Usage comes out of the plan's **shared AI usage pool**, which "covers Chat, Imagine, Voice, and Bot" in Grok and Cursor; Build is listed in every paid tier. Premium = 4× Plus, Super 15×, Ultra 50×. **Pool sizes are not published.** The allowance **refreshes weekly**; past it you either wait or buy top-ups (a spend: needs Ben's OK). | https://x.ai/pricing |
+| **API key** (`XAI_API_KEY`) | Per token, outside the pool. The CLI uses the key only when no sign-in session exists. | ~/.grok/docs/user-guide/02-authentication.md (installed with the CLI); https://docs.x.ai/developers/pricing |
+
+API prices per 1M tokens (prompt under 200k tokens; **at 200k+ every token in that request costs double**):
+
+| Model | Input | Cached input | Output | Status |
+|---|---|---|---|---|
+| `grok-4.7` | $2.00 | $0.50 | $6.00 | current; what x.ai/build says Grok Build runs on |
+| `grok-4.6` | $2.00 | $0.50 | $6.00 | the CLI's listed default before sign-in (`grok models`) |
+| `grok-4.5` (= alias `grok-build-latest`) | $2.00 | $0.30 | $6.00 | |
+| `grok-build-0.1` | ($1.00 / $0.20 / $2.00) | | | **end of life 19 Nov 2026, no longer served** (https://docs.x.ai/developers/release-notes); its page now redirects |
+
+Sources: https://docs.x.ai/docs/models, https://docs.x.ai/developers/pricing. US-regional endpoint: +10%.
+
+## 2. Token burn per agent-hour (estimate)
+
+No Grok session has run, so this is borrowed. Hugging Face's PyBot swarm used about **24k output and
+20M input tokens per agent-hour** (appendix §1). A Lean agent that waits on a serialised ≈30–45 s build
+should burn less, so the range below is **5M–20M input tokens per agent-hour**, 90% of it cached.
+The launch script starts a **fresh session each round** so prompts stay under 200k tokens (no doubling).
+
+| Model (API) | 5M input/h | 20M input/h | if prompts pass 200k |
+|---|---|---|---|
+| grok-4.7 | $3.39 / agent-hour | $13.14 / agent-hour | ×2 |
+| grok-4.5 | $2.49 / agent-hour | $9.54 / agent-hour | ×2 |
+
+## 3. API-key scenarios (USD, tokens only; the box costs nothing extra)
+
+| Scenario | Agent-hours | grok-4.7 | grok-4.5 |
+|---|---|---|---|
+| Smoke: 3 agents × 2 h | 6 | $20 – $79 | $15 – $57 |
+| Box-realistic: 2 agents × 24 h | 48 | $163 – $631 | $120 – $458 |
+| Low: 5 agents × 24 h (needs builds queued; more than the box should run) | 120 | $407 – $1,577 | $299 – $1,145 |
+
+## 4. On the plan pool: free per session, but it drains Ben's Grok Bot budget
+
+- **The same weekly pool powers Ben's Grok Bot agents (including this one), Grok chat and Cursor.**
+  A swarm that runs for hours can empty it, and then his bots slow down or stop until the weekly refresh,
+  unless he buys a top-up.
+- The pool size is unpublished, so the swarm's share cannot be computed in advance. At API prices one
+  agent-hour is worth roughly **$3–13**; a $30/month Premium plan is unlikely to absorb many of those
+  per week. Treat any run longer than an hour as able to exhaust the week's pool.
+- `grok usage` from the shell says it cannot show the plan's usage yet ("Run /usage inside grok
+  instead"), and headless JSON often **omits cost on pool/OAuth sessions**. So the script caps
+  **tokens** (which headless JSON always reports), not dollars.
+
+**How it is capped** (`swarm/grok/launch.sh`, ceilings the script enforces whatever is passed):
+
+| Cap | Default | Ceiling |
+|---|---|---|
+| Concurrent agents | 1 | 3 |
+| Wall clock for the whole swarm | 20 min | 24 h |
+| Agent turns per round (`--max-turns`) | 30 | 80 |
+| Wall clock per round (`timeout`) | 20 min | 60 min |
+| Total tokens for the whole swarm (`TOKEN_BUDGET`, checked after each round) | 3M | set by Ben |
+| Kill switch | `launch.sh stop` | touches `STOP`, kills every process group |
+
+**Calibrate first:** Ben reads `/usage` in an interactive `grok` session, the script runs one agent for
+≤20 minutes, Ben reads `/usage` again. The difference, set against the tokens in `ledger.tsv`, tells us
+what share of the weekly pool an agent-hour costs. Only then pick `TOKEN_BUDGET` for anything longer.
+
+## Appendix (superseded 26 Nov 09:20 AEDT): Legion + DeepSeek / HF router estimate
+
+Kept for comparison. Ben chose Grok Build instead ("Just use Grok build").
 
 Prices were fetched on **26 Nov 2026 (AEDT)**. Re-read them before any launch. **Nothing has been
 bought, no account was opened and no API key was created.** Every option below needs Ben's
 explicit OK first (his rule: no subscription or spend without his OK).
 
-## 1. What the Hugging Face report tells us about token use
+### 1. What the Hugging Face report tells us about token use
 
 Source: *Scaling Swarms to Thousands of Agents* (Patiño, Tunstall, Burtenshaw, von Werra,
 Hugging Face, 25 Nov 2026), https://huggingface.co/spaces/HuggingFaceSwarms/scaling-swarms, and
@@ -35,7 +108,7 @@ Assumptions used below (state them to Ben):
   17:00–21:00 AEDT). A week-long average is 21% peak, so the blended price is 0.604 × peak.
   **A weekend run is entirely off-peak (half price).**
 
-## 2. Model prices (per 1M tokens, fetched 26 Nov 2026)
+### 2. Model prices (per 1M tokens, fetched 26 Nov 2026)
 
 | Option | Input (cache miss) | Cached input | Output | Source |
 |---|---|---|---|---|
@@ -51,7 +124,7 @@ Legion talks to the HF router or to any OpenAI-compatible URL (`inference.urls`)
 API should work through `urls: [https://api.deepseek.com/v1]`. **That path is untested**: Legion's
 docs only show the router, vLLM, SGLang, llama.cpp and Ollama.
 
-## 3. Cost per agent-hour
+### 3. Cost per agent-hour
 
 | Option | $/agent-hour |
 |---|---|
@@ -62,7 +135,7 @@ docs only show the router, vLLM, SGLang, llama.cpp and Ollama.
 | E. HF router flash via together/fireworks (Legion's default price) | $6.03 |
 | F. HF router Qwen3.8-27B via deepinfra | $3.04 |
 
-## 4. Compute and hosting
+### 4. Compute and hosting
 
 | Piece | Option | Price | Note |
 |---|---|---|---|
@@ -78,7 +151,7 @@ HF Jobs and Sandboxes are pay-as-you-go but need a **positive credit balance** o
 (https://huggingface.co/docs/huggingface_hub/guides/jobs). Compute is a rounding error next to tokens:
 about $3 for the low scenario and about $12 for the high one.
 
-## 5. Scenarios (tokens + compute, USD)
+### 5. Scenarios (tokens + compute, USD)
 
 | Scenario | Agent-hours | A. DeepSeek flash (base) | B. flash, pessimistic | C. V4-Pro | D. router deepinfra | E. router $0.30/$1.20 |
 |---|---|---|---|---|---|---|
@@ -87,7 +160,7 @@ about $3 for the low scenario and about $12 for the high one.
 | Mid: 15 agents × 36 h | 540 | **$248** | $723 | $1,159 | $1,070 | $3,264 |
 | High: 20 agents × 48 h | 960 | **$440** | $1,285 | $2,059 | $1,901 | $5,801 |
 
-## 6. Recommendation
+### 6. Recommendation
 
 1. **Smoke test first**: 3 agents (one per lane) for 2 hours on the DeepSeek API, with a $15 hard cap.
    It measures the real tokens per agent-hour, the cache hit rate and the build time. Re-cost after it.

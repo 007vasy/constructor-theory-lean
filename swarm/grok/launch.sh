@@ -73,8 +73,12 @@ W
   # no network for child processes; deny GitHub/SSH credentials and the bot's data.
   mkdir -p "$HOME/.grok"; touch "$HOME/.grok/sandbox.toml"
   python3 - "$HOME/.grok/sandbox.toml" "$BOARD" "$R/.git" "$LOCK" <<'PY'
-import re, sys
+import json, os, re, sys
 p, board, gitdir, lock = sys.argv[1:]
+# bwrap refuses to start when a deny path does not exist, so keep only existing ones (globs always).
+cand = ["~/.config/gh", "~/.ssh", "~/.gnupg", "~/.aws", "~/.docker", "~/.kube", "~/.netrc", "~/.git-credentials",
+        "~/.config/google-chrome", "~/.mozilla", "~/.local/share/keyrings", "/home/box/agent-data"]
+deny = json.dumps([c for c in cand if os.path.exists(os.path.expanduser(c))] + ["**/.env"])
 s = open(p).read()
 s = re.sub(r"\n?\[profiles\.ctlswarm\].*?(?=\n\[|\Z)", "", s, flags=re.S)   # replace our own block only
 s = s.rstrip("\n") + f"""
@@ -83,7 +87,7 @@ s = s.rstrip("\n") + f"""
 extends = "workspace"
 restrict_network = true
 read_write = ["{board}", "{gitdir}", "{lock}"]
-deny = ["~/.config/gh", "~/.ssh", "~/.gnupg", "~/.aws", "~/.docker", "~/.kube", "~/.netrc", "~/.git-credentials", "~/.config/google-chrome", "~/.mozilla", "~/.local/share/keyrings", "/home/box/agent-data", "**/.env"]
+deny = {deny}
 """
 open(p, "w").write(s.lstrip("\n"))
 PY

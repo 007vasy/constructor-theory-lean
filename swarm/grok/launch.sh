@@ -42,13 +42,13 @@ ROUND_FILE="${ROUND_FILE:-$SRC/round.md}"; ROUND_FILE="$(cd "$(dirname "$ROUND_F
 LANES=(derive redteam derive)                     # agent i gets LANES[i]; the steward is this script
 
 R="$SWARM_HOME/repo"; WT="$SWARM_HOME/wt"; BOARD="$SWARM_HOME/board"; LOGS="$SWARM_HOME/logs"
-LEDGER="$SWARM_HOME/ledger.tsv"; STOP="$SWARM_HOME/STOP"; LOCK="$SWARM_HOME/build.lock"; BIN="$SWARM_HOME/bin"
+LEDGER="$SWARM_HOME/ledger.tsv"; STOP="$SWARM_HOME/STOP"; LOCK="$SWARM_HOME/lock/build.lock"; BIN="$SWARM_HOME/bin"
 
 stopped() { [ -e "$STOP" ]; }
 log() { echo "$(date '+%F %T %Z') $*" | tee -a "$SWARM_HOME/swarm.log" >&2; }
 
 setup() {
-  mkdir -p "$SWARM_HOME" "$WT" "$BOARD" "$LOGS" "$BIN"
+  mkdir -p "$SWARM_HOME" "$WT" "$BOARD" "$LOGS" "$BIN" "$(dirname "$LOCK")"
   [ -d "$R/.git" ] || git clone -q "$REPO_URL" "$R"
   git -C "$R" remote set-url --push origin DISABLED-no-push-from-swarm   # agents can never push to GitHub
   git -C "$R" fetch -q origin
@@ -72,7 +72,7 @@ W
   # Kernel sandbox profile (Landlock): write only the worktree, the board, the repo's .git, /tmp;
   # no network for child processes; deny GitHub/SSH credentials and the bot's data.
   mkdir -p "$HOME/.grok"; touch "$HOME/.grok/sandbox.toml"
-  python3 - "$HOME/.grok/sandbox.toml" "$BOARD" "$R/.git" "$LOCK" <<'PY'
+  python3 - "$HOME/.grok/sandbox.toml" "$BOARD" "$R/.git" "$(dirname "$LOCK")" <<'PY'
 import json, os, re, sys
 p, board, gitdir, lock = sys.argv[1:]
 # bwrap refuses to start when a deny path does not exist, so keep only existing ones (globs always).

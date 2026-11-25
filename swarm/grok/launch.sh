@@ -25,12 +25,14 @@ set -euo pipefail
 SWARM_HOME="${SWARM_HOME:-/workspace/ctl-swarm}"
 REPO_URL="${REPO_URL:-https://github.com/007vasy/constructor-theory-lean}"
 BASE_REF="${BASE_REF:-origin/next-steps}"
-PKGS="${PKGS:-/workspace/ctl/.lake/packages}"      # prebuilt Mathlib v4.36.0 (7.3 GB), shared read-only
+# Prebuilt Mathlib v4.36.0 (7.3 GB), shared read-only. Box: /workspace/ctl; elsewhere: run `lake exe cache get` in $SWARM_HOME/repo first.
+if [ -z "${PKGS:-}" ]; then [ -d /workspace/ctl/.lake/packages ] && PKGS=/workspace/ctl/.lake/packages || PKGS="$SWARM_HOME/repo/.lake/packages"; fi
 GROK_BIN="${GROK_BIN:-$HOME/.grok/bin/grok}"
 SRC="$(cd "$(dirname "$0")" && pwd)"
 
 clamp() { python3 -c "import sys; v=min(float(sys.argv[1]), float(sys.argv[2])); print(int(v) if v.is_integer() else v)" "$1" "$2"; }
-AGENTS=$(clamp "${AGENTS:-1}" 3)
+AGENTS_CEILING=$(clamp "${AGENTS_CEILING:-3}" 8)   # 3 on the box; up to 8 on Ben's 128-core / 61 GB workstation
+AGENTS=$(clamp "${AGENTS:-1}" "$AGENTS_CEILING")
 HOURS=$(clamp "${HOURS:-0.33}" 24)
 MAX_TURNS=$(clamp "${MAX_TURNS:-30}" 80)
 ROUND_MIN=$(clamp "${ROUND_MIN:-20}" 60)
@@ -81,7 +83,7 @@ s = s.rstrip("\n") + f"""
 extends = "workspace"
 restrict_network = true
 read_write = ["{board}", "{gitdir}", "{lock}"]
-deny = ["~/.config/gh", "~/.ssh", "~/.git-credentials", "/home/box/agent-data", "**/.env"]
+deny = ["~/.config/gh", "~/.ssh", "~/.gnupg", "~/.aws", "~/.docker", "~/.kube", "~/.netrc", "~/.git-credentials", "~/.config/google-chrome", "~/.mozilla", "~/.local/share/keyrings", "/home/box/agent-data", "**/.env"]
 """
 open(p, "w").write(s.lstrip("\n"))
 PY
@@ -174,6 +176,14 @@ start() {
   log "start: AGENTS=$AGENTS HOURS=$HOURS MAX_TURNS=$MAX_TURNS ROUND_MIN=$ROUND_MIN TOKEN_BUDGET=$TOKEN_BUDGET MODEL=${MODEL:-default}"
   ( while ! stopped; do [ "$(date +%s)" -ge "$deadline" ] && { log "HOURS reached: STOP"; touch "$STOP"; }; sleep 20; done ) &
   echo $! > "$SWARM_HOME/pids"
+  # Memory sampler: total RSS (MB) of grok, lean and lake processes every 10 s.
+  ( echo -e "time\tgrok_mb\tlean_lake_mb\tavail_mb" > "$SWARM_HOME/mem.tsv"
+    while ! stopped; do
+      printf '%s\t%s\t%s\t%s\n' "$(date +%T)" \
+        "$(ps -eo rss=,comm= | awk '$2 ~ /^grok/ {s+=$1} END{print int(s/1024)}')" \
+        "$(ps -eo rss=,comm= | awk '$2 ~ /^(lean|lake)/ {s+=$1} END{print int(s/1024)}')" \
+        "$(awk '/MemAvailable/ {print int($2/1024)}' /proc/meminfo)" >> "$SWARM_HOME/mem.tsv"; sleep 10; done ) &
+  echo $! >> "$SWARM_HOME/pids"
   for i in $(seq 0 $((AGENTS-1))); do
     setsid bash -c "$(declare -f log stopped tokens_used prompt_for agent_loop steward_merge); $(declare -p SWARM_HOME R WT ROUND_FILE BOARD LOGS LEDGER STOP LOCK BIN SRC GROK_BIN MODEL MAX_TURNS ROUND_MIN TOKEN_BUDGET LANES); agent_loop $i" &
     echo $! >> "$SWARM_HOME/pids"; sleep 5

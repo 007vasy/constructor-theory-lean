@@ -1,0 +1,95 @@
+# ⚠️ UNTESTED DRAFT — never run. Do not launch without Ben's explicit OK (docs/swarm/PILOT.md §8).
+# Written for Legion e04645b (https://github.com/huggingface/legion), modelled on
+# experiments/pybot/spec.yaml (lanes, roles, loop, budget) and experiments/programbench/spec.yaml
+# (hf_repo PR tools). Legion warns its spec format can change without notice: re-check against the
+# pinned commit before use. `legion init` writes every ${VAR} into run.env.
+#
+# Smoke test: SMOKE=1 counts below (1 per lane), budget 15, timeout 2 h.
+# Low pilot:  derive 5, redteam 3, steward 2, budget 150, timeout 25 h.
+name: ${RUN_NAME:-ctl-swarm-smoke}
+bucket_id: ${BUCKET_ID}                     # private HF bucket for run state
+compute: local                              # controller + workers on Ben's box ...
+harness: pi                                 # Legion's only supported harness today
+model: deepseek-flash                       # the name the DeepSeek API serves (V4.1-Flash-1017)
+# [input, output, cached] USD per 1M tokens. DeepSeek PEAK prices fetched 26 Nov 2026
+# (https://api-docs.deepseek.com/quick_start/pricing). Peak is conservative: Legion's budget
+# stop then fires early rather than late. Re-read before launch.
+pricing: [0.30, 1.20, 0.006]
+inference:
+  # UNTESTED: Legion documents `urls` for any OpenAI-compatible server with tool calling.
+  # The DeepSeek API is OpenAI-compatible with tool calls, but no Legion example uses it.
+  # Fallback (tested by Legion, ~4x the price): hf_router: {provider: deepinfra} with
+  # model deepseek-ai/DeepSeek-V4.1-Flash-1017 and api_key_env HF_INFERENCE_TOKEN.
+  urls: [https://api.deepseek.com/v1]
+  api_key_env: DEEPSEEK_API_KEY             # inference only; every sandbox holds it
+  reasoning_effort: high
+  context_window: 1000000
+task:
+  repo: https://huggingface.co/datasets/${HF_USER}/ctl-swarm-tasks   # publish swarm/task/ there
+  selector: ctl-agent
+  revision: '${CTL_TASK_REVISION}'          # full commit SHA of the task dataset
+team_file: ../../docs/swarm/SYSTEM_PROMPT.md
+resources:
+  hf_repo:                                  # private HF dataset mirroring 007vasy/constructor-theory-lean
+    repo_id: ${HF_USER}/ctl-swarm-mirror    # must exist, be private and have main seeded before launch
+    token_env: HF_REPO_TOKEN                # read/write on this dataset only; never HF_TOKEN
+  message_board:
+    url: '${BOARD_URL}'                     # a dedicated board Space (msgboard deploy-space)
+    token_env: MSGBOARD_OPERATOR_TOKEN
+    channels: [general, derive, redteam, steward]
+    wake: [mention, thread, channel]
+    rules:
+      min_post_gap: 10s
+      max_len: 1200
+      threads: per_topic
+      no_group_mentions: true
+      max_channels_per_agent: 3
+      max_channels: 12
+tools: [message_board.*, message_board_extra.*, hf_repo.*]
+agents:
+  roles:
+    derive:
+      count: ${DERIVE_COUNT:-1}
+      role_file: ../../docs/swarm/lanes/derive.md
+    redteam:
+      count: ${REDTEAM_COUNT:-1}
+      role_file: ../../docs/swarm/lanes/redteam.md
+    steward:
+      count: ${STEWARD_COUNT:-1}
+      role_file: ../../docs/swarm/lanes/steward.md
+      name_prefix: steward-
+      loop:
+        prompt_file: prompts/round.md
+        every: 15m
+        notices: true
+        on: [message_board.mention, message_board.thread]
+        while:
+          until: ${RUN_HOURS:-2}h
+          max_rounds: 1000
+        final:
+          prompt_file: prompts/final.md
+          reserve_usd: 0.5
+        resume_prompt: 'Your previous turn was interrupted. Read your notes, check your clone and PRs, and continue.'
+environment:
+  backend: hf-sandbox                       # ... agents in HF Sandboxes (the box has no Docker)
+  flavor: cpu-basic                         # 2 vCPU / 16 GB / 50 GB; cpu-upgrade if builds > 5 min
+workers:
+  agents_per_worker: 10
+  turn_timeout: 1h
+loop:
+  prompt_file: prompts/round.md
+  every: turn_end
+  notices: true
+  on: [message_board.mention, message_board.thread, message_board.channel]
+  while:
+    until: ${RUN_HOURS:-2}h
+    max_rounds: 1000
+  final:
+    prompt_file: prompts/final.md
+    reserve_usd: 1
+  resume_prompt: 'Your previous turn was interrupted. Read your notes, check your clone and PRs, and continue.'
+limits:
+  run_timeout_seconds: ${RUN_TIMEOUT_SECONDS:-7200}
+  agent_max_turns: 150
+  budget_usd: ${BUDGET_USD:-15}             # HARD STOP for the whole swarm. Ben sets this.
+  trial_hours: 21

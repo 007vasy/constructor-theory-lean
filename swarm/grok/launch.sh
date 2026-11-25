@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Grok Build swarm pilot for constructor-theory-lean.
-# ⚠️ UNTESTED WITH A REAL MODEL: the plumbing (setup, worktrees, board, build lock, steward merge,
-# kill switch) was dry-run on the box with a stub agent (GROK_BIN=stub). No `grok` session has run.
+# Tested once with a real model: the 1-agent calibration run on Ben's workstation, 26 Nov 2026
+# (docs/swarm/CALIBRATION.md). No multi-agent run has happened yet.
 # Do NOT start it without Ben's explicit OK (docs/swarm/PILOT.md §8): it draws on his shared plan
 # pool, which also powers his Grok Bot agents.
 #
@@ -154,24 +154,23 @@ PY
 }
 
 steward_merge() {  # Deterministic steward: merge an agent branch into swarm-run only if the judge passes.
+  # swarm-run is the branch checked out in $R (nobody edits there), so merge in $R itself;
+  # `git branch -f swarm-run` would fail ("used by worktree").
   local name="$1" dir="$WT/$1"
   ( cd "$dir"
+    # Commit leftover work first: an agent that runs out of turns often leaves an untracked file.
+    if git status --porcelain | grep -q .; then
+      git add -A && git -c user.name="$name" -c user.email="$name@swarm.local" commit -qm "$name: uncommitted work at end of round" || true
+    fi
     git diff --quiet swarm-run...HEAD 2>/dev/null && exit 0                  # nothing new
-    git status --porcelain | grep -q . && git add -A && git -c user.name="$name" -c user.email="$name@swarm.local" commit -qm "$name: uncommitted work at end of round" || true
     if flock "$LOCK" "$BIN/judge.sh" swarm-run > "$LOGS/$name-judge.txt" 2>&1; then
       local line; line=$(tail -1 "$LOGS/$name-judge.txt")
-      if git -C "$R" merge-base --is-ancestor swarm-run "agent/$name"; then
-        git -C "$R" branch -f swarm-run "agent/$name"
+      if git -C "$R" -c user.name=steward -c user.email=steward@swarm.local merge -q --no-edit "agent/$name"; then
+        echo "- $(date -u +%FT%TZ) steward: merged $name ($line)" >> "$BOARD/general.md"
       else
-        local tmp="$SWARM_HOME/merge-tmp"; rm -rf "$tmp"; git -C "$R" worktree add -q "$tmp" swarm-run
-        if (cd "$tmp" && git -c user.name=steward -c user.email=steward@swarm.local merge -q --no-edit "agent/$name"); then
-          git -C "$tmp" checkout -q --detach; git -C "$R" branch -f swarm-run "$(git -C "$tmp" rev-parse HEAD)"
-        else
-          (cd "$tmp" && git merge --abort); echo "- $(date -u +%FT%TZ) steward: @$name merge conflict with swarm-run; rebase onto swarm-run" >> "$BOARD/steward.md"
-        fi
-        git -C "$R" worktree remove --force "$tmp"
+        git -C "$R" merge --abort 2>/dev/null
+        echo "- $(date -u +%FT%TZ) steward: @$name merge conflict with swarm-run; rebase onto swarm-run" >> "$BOARD/steward.md"
       fi
-      echo "- $(date -u +%FT%TZ) steward: merged $name ($line)" >> "$BOARD/general.md"
     else
       echo "- $(date -u +%FT%TZ) steward: @$name not merged: $(tail -1 "$LOGS/$name-judge.txt")" >> "$BOARD/steward.md"
     fi )

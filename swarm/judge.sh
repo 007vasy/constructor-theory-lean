@@ -35,6 +35,15 @@ PY
 LOG="$(mktemp)"
 lake build >"$LOG" 2>&1 || { tail -30 "$LOG"; fail "lake build failed"; }
 grep -q "declaration uses 'sorry'" "$LOG" && fail "build reports a declaration using sorry"
+# 3b. `lake build` only builds what the root module imports. Build every changed .lean module too,
+#     so a new file that is not yet imported is still compiled (and cannot pass vacuously).
+for f in $(git diff --name-only --diff-filter=AM "$BASE"...HEAD -- 'ConstructorTheory/*.lean'; \
+           git ls-files --others --exclude-standard -- 'ConstructorTheory/*.lean'); do
+  [ -f "$f" ] || continue
+  mod="$(echo "${f%.lean}" | tr '/' '.')"
+  lake build "$mod" >"$LOG.mod" 2>&1 || { tail -30 "$LOG.mod"; fail "lake build $mod failed"; }
+  grep -q "declaration uses 'sorry'" "$LOG.mod" && fail "$mod: declaration uses sorry"
+done
 
 # 4. Verifier: every cited theorem uses only propext, Classical.choice, Quot.sound,
 #    and the Python table matches the Lean catalogue.

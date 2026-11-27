@@ -55,3 +55,49 @@ timestamp	commit	item	status	axioms	note
 2026-11-22T06:58:54Z	6321c67fe6d6	th.qubit-superinformation	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
 2026-11-22T06:58:54Z	6321c67fe6d6	th.planck-ceiling	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
 2026-11-22T06:58:54Z	6321c67fe6d6	th.planck-freeze	OK	Classical.choice,Quot.sound,propext	standard axioms only | closing the gap: FD, breakdown schema, qubit superinformation, Planck factor
+2026-11-22T08:57:42Z	9a191bbc5c78	table-vs-lean	OK	-	Python table == Lean catalogue | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.catalogue-counts	OK	propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-continuum-iv	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.droplet	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.distinguish	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.distinguish-converse	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.pauli-noncommute	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-joint-sharp	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.classical-copying	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-superinformation	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.conservation-impossible	OK	none	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.second-law-impotence	OK	propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.ct-irreversibility	OK	propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.ct-irreversibility-example	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.breakdown-exact	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.fd-no-continuum	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.fd-iff-discrete	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.continuum-violates-fd	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.ladder-fd	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-cloning	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.qclone-impossible	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.qubit-basis-clone	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.qubit-rotated-clone	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.qubit-nonorth	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.copying-law-breaks	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.qubit-superinformation	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.planck-ceiling	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.planck-freeze	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-magic-table	OK	Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.no-magic-table-bool	OK	propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-le-eight	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-eq-eight	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-rate	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-rows	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-cols	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-row-commute	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.magic-col-commute	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.orth-family-finite	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.speed-limit	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.orth-steps	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.plus-flips	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.labelled-swap	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.identical-swap	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.labelled-mixing	OK	propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.gibbs-ratio	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles
+2026-11-22T08:57:42Z	9a191bbc5c78	th.gibbs-bounds	OK	Classical.choice,Quot.sound,propext	standard axioms only | law 23 magic square, speed limit, identical particles

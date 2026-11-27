@@ -3,7 +3,7 @@
  "meta": {
   "title": "The formalisation gap",
   "eyebrow": "constructor-theory-lean · labyrinth map",
-  "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."
+  "subtitle": "23 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."
  },
  "nodes": [
   {
@@ -557,13 +557,36 @@
    "updated": "2026-11-22"
   },
   {
+   "id": "x.magic-square",
+   "kind": "deadend",
+   "status": "refuted",
+   "title": "Non-contextual values (Mermin-Peres magic square)",
+   "statement": "Classical law, taken as exact. Fails in regime: two Bell pairs, nine Pauli observables. Replaced by: contextual quantum observables; win rate 1 vs 8/9.",
+   "lesson": "Failed assumption: P2 Joint sharpness.",
+   "evidence": [
+    "Google Quantum AI, Science 394, 870 (2026): 98.3% win rate",
+    "docs/formalisation-gap/CATALOGUE.md"
+   ],
+   "links": [
+    {
+     "to": "k.sharp",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CATALOGUE.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
    "id": "k.cont",
    "kind": "conjecture",
    "tier": "T5",
    "status": "open",
    "title": "P1 Continuum",
    "statement": "Energy and modes are infinitely divisible. Fails where hbar*omega >~ k_B T, or action ~ hbar.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 14/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 14/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -583,7 +606,7 @@
    "status": "open",
    "title": "P2 Joint sharpness",
    "statement": "Every observable has a sharp value at once (phase-space points). Fails because [q,p] = i*hbar.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 9/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 10/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -603,7 +626,7 @@
    "status": "open",
    "title": "P3 Local realism",
    "statement": "Correlations come from local pre-set values. Fails because CHSH reaches 2*sqrt(2) > 2.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 1/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 1/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -623,7 +646,7 @@
    "status": "open",
    "title": "P4 Universal distinguishability and copying",
    "statement": "Every state can be perfectly distinguished and copied. Fails: non-orthogonal states, no-cloning.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 2/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 2/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -643,7 +666,7 @@
    "status": "open",
    "title": "P5 Labelled identity",
    "statement": "Identical particles carry labels. Fails: (anti)symmetrised states, Bose/Fermi statistics.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 3/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 3/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -663,7 +686,7 @@
    "status": "open",
    "title": "P6 Smooth at all scales",
    "statement": "A differential (field) description holds down to arbitrarily small scales. Fails: divergences.",
-   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 4/22 rows carry this tag.",
+   "test": "Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently 4/23 rows carry this tag.",
    "links": [
     {
      "to": "k.ben-thesis",
@@ -682,7 +705,7 @@
    "tier": "T2",
    "status": "established",
    "title": "Tag counts of the catalogue",
-   "statement": "In our tagging: continuum 14, joint sharpness 9, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 22).",
+   "statement": "In our tagging: continuum 14, joint sharpness 10, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 23).",
    "note": "Lean: ConstructorTheory.continuum_most_common. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
    "review": {
     "state": "unreviewed"
@@ -1406,6 +1429,492 @@
    "updated": "2026-11-22"
   },
   {
+   "id": "th.no-magic-table",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "No magic table",
+   "statement": "No 3x3 table of integers has all row products +1 and all column products -1.",
+   "note": "Lean: ConstructorTheory.MagicSquare.no_magic_table. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-magic-table-bool",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "No magic table (parity form)",
+   "statement": "No Boolean 3x3 table has even rows and odd columns (decide over 9 variables).",
+   "note": "Lean: ConstructorTheory.MagicSquare.no_magic_table_bool. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-le-eight",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Deterministic strategies win at most 8 of 9 rounds",
+   "statement": "Every pre-assigned (non-contextual) strategy loses at least one of the 9 row/column questions.",
+   "note": "Lean: ConstructorTheory.MagicSquare.classical_wins_le_eight. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-eq-eight",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Some deterministic strategy wins exactly 8",
+   "statement": "The 8/9 bound is attained.",
+   "note": "Lean: ConstructorTheory.MagicSquare.classical_wins_eq_eight. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-rate",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Best deterministic win rate is 8/9",
+   "statement": "Over uniformly random questions the best deterministic win rate is exactly 8/9 (mixtures: convexity, not formalised).",
+   "note": "Lean: ConstructorTheory.MagicSquare.classical_best_rate. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-rows",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Pauli square: rows multiply to +I",
+   "statement": "Two-qubit Pauli magic square, row products +I.",
+   "note": "Lean: ConstructorTheory.MagicSquare.magic_rows. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-cols",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Pauli square: columns multiply to -I",
+   "statement": "Two-qubit Pauli magic square, column products -I.",
+   "note": "Lean: ConstructorTheory.MagicSquare.magic_cols. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-row-commute",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Pauli square: rows are compatible",
+   "statement": "Observables in one row commute.",
+   "note": "Lean: ConstructorTheory.MagicSquare.magic_row_commute. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-col-commute",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Pauli square: columns are compatible",
+   "statement": "Observables in one column commute.",
+   "note": "Lean: ConstructorTheory.MagicSquare.magic_col_commute. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/MagicSquare.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/MagicSquare.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.orth-family-finite",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Orthogonal families in a finite-dimensional subspace are finite",
+   "statement": "Pairwise-orthogonal non-zero vectors in a finite-dimensional subspace W number at most dim W (static half of FD, given finite-dimensional energy-bounded subspaces).",
+   "note": "Lean: ConstructorTheory.SpeedLimit.orthogonal_family_finite. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/SpeedLimit.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/SpeedLimit.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.speed-limit",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Quantum speed limit (constant 1)",
+   "statement": "A normalised state on levels e_k >= 0 orthogonal to itself at time t has 1 <= <E> t (hbar = 1); Margolus-Levitin's sharp constant is pi/2.",
+   "note": "Lean: ConstructorTheory.SpeedLimit.speed_limit. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/SpeedLimit.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/SpeedLimit.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.orth-steps",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Distinguishable steps <= energy x time",
+   "statement": "m successive orthogonal states along a trajectory within time T force m <= <E> T (FD per action, derived).",
+   "note": "Lean: ConstructorTheory.SpeedLimit.orthogonal_steps_le. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/SpeedLimit.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/SpeedLimit.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.plus-flips",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "The speed limit is not vacuous",
+   "statement": "|+> on levels (0,1) is orthogonal to itself at t = pi with <E> = 1/2.",
+   "note": "Lean: ConstructorTheory.SpeedLimit.plus_flips. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/SpeedLimit.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/SpeedLimit.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.labelled-swap",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Labelled particles: swap is distinguishable",
+   "statement": "On alpha x alpha, (x,y) and (y,x) with x != y can be told apart.",
+   "note": "Lean: ConstructorTheory.IdenticalParticles.labelled_swap_possible. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/IdenticalParticles.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.identical-swap",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Identical particles: swap is not distinguishable",
+   "statement": "On Sym2 alpha, a configuration and its swap are one state; distinguishing them is impossible.",
+   "note": "Lean: ConstructorTheory.IdenticalParticles.identical_swap_impossible. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/IdenticalParticles.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.labelled-mixing",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Labelled counting: mixing factor 4^N (Gibbs paradox)",
+   "statement": "(2M)^(2N) = 4^N (M^N)^2: mixing identical labelled gases gives entropy 2N ln 2.",
+   "note": "Lean: ConstructorTheory.IdenticalParticles.labelled_mixing. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/IdenticalParticles.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.gibbs-ratio",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Gibbs counting: mixing factor 4^N / C(2N,N)",
+   "statement": "With 1/N!, the mixing factor is 4^N / C(2N, N).",
+   "note": "Lean: ConstructorTheory.IdenticalParticles.gibbs_mixing_ratio. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/IdenticalParticles.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.gibbs-bounds",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "title": "Gibbs mixing entropy is sub-extensive",
+   "statement": "1 <= 4^N / C(2N,N) <= 2N + 1, so the mixing entropy is at most ln(2N+1).",
+   "note": "Lean: ConstructorTheory.IdenticalParticles.gibbs_mixing_ratio_bounds. Kernel-checked by `lake build` in CI; harness/run_checks.py audits axioms. No human referee yet.",
+   "review": {
+    "state": "unreviewed"
+   },
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "harness/results.tsv"
+   ],
+   "links": [
+    {
+     "to": "src.lean-repo",
+     "rel": "cites"
+    }
+   ],
+   "where": [
+    "ConstructorTheory/IdenticalParticles.lean"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
    "id": "k.ben-thesis",
    "kind": "conjecture",
    "tier": "T5",
@@ -1554,7 +2063,7 @@
    "status": "open",
    "title": "Chosen model: C4 frame with C1 + C2 as the two forbidden-task principles",
    "statement": "Classical laws assume two classes of tasks possible: copying arbitrary states (forbidden by superinformation) and distinguishing unboundedly many states with bounded action (forbidden by FD). Breakdown happens exactly at those tasks.",
-   "test": "Find a catalogue row whose breakdown needs neither a forbidden copy nor a forbidden fine distinction (rows 3, 12, 13, 18 are the live candidates).",
+   "test": "Find a catalogue row whose breakdown needs neither a forbidden copy/sharpening nor a forbidden fine distinction. Live candidates: Maxwell-Boltzmann and Gibbs (identical particles), which carry neither tag.",
    "links": [
     {
      "to": "k.c1-fd",
@@ -1578,9 +2087,86 @@
   {
    "id": "q.fd-from-ml",
    "kind": "question",
-   "status": "open",
+   "status": "answered",
    "title": "Derive FD from the Margolus-Levitin bound in Lean",
    "statement": "In a finite-dimensional Hilbert-space Theory, prove that orthogonalisation takes time >= pi*hbar/(2E), so a bounded-energy, bounded-time task distinguishes finitely many states.",
+   "note": "Partly answered (SpeedLimit.lean): speed limit with constant 1 (not pi/2), step count m <= <E>T, static half needs finite-dimensional energy-bounded subspaces (assumed).",
+   "links": [
+    {
+     "to": "th.orth-steps",
+     "rel": "answers"
+    }
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "q.ml-sharp",
+   "kind": "question",
+   "status": "open",
+   "title": "Sharp Margolus-Levitin constant pi/2 in Lean",
+   "statement": "Prove cos x >= 1 - (2/pi)(x + sin x) for x >= 0 and hence t >= pi/(2<E>).",
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "x.two-tasks-complete",
+   "kind": "deadend",
+   "status": "refuted",
+   "title": "'Two forbidden tasks' is complete",
+   "statement": "Claim: every catalogue law fails at a forbidden copy/sharpening (a) or a forbidden fine distinction (b).",
+   "lesson": "Maxwell-Boltzmann and Gibbs fail at neither: they need the symmetrisation postulate, a third forbidden task (c) 'distinguishing identical substrates from their permutations'. Fermi-Dirac needs spin-statistics beyond that.",
+   "evidence": [
+    "ConstructorTheory/IdenticalParticles.lean",
+    "docs/formalisation-gap/CLOSING_THE_GAP.md"
+   ],
+   "where": [
+    "docs/formalisation-gap/CLOSING_THE_GAP.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "x.fd-from-superinformation",
+   "kind": "deadend",
+   "status": "refuted",
+   "title": "FD follows from superinformation alone",
+   "statement": "Claim: task (b) reduces to task (a).",
+   "lesson": "Only via full Hilbert-space quantum theory plus energy-generated dynamics (speed limit), plus a spectral assumption for the static half; superinformation alone does not fix Hilbert space (Spekkens).",
+   "evidence": [
+    "ConstructorTheory/SpeedLimit.lean"
+   ],
+   "where": [
+    "docs/formalisation-gap/CLOSING_THE_GAP.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "k.chosen-v2",
+   "kind": "conjecture",
+   "tier": "T5",
+   "status": "open",
+   "title": "Revised model: quantum kinematics + energy dynamics + exchange symmetry",
+   "statement": "Classical laws fail at three forbidden tasks: (a) copying/jointly sharpening arbitrary attributes, (b) unbounded distinction with bounded action (now derived from (a)'s Hilbert-space form plus dynamics, up to a spectral assumption), (c) distinguishing identical substrates from their permutations.",
+   "test": "A catalogue law failing at none of (a)-(c); or a perfect copier, an over-the-speed-limit distinguisher, or a measurable swap of identical particles.",
+   "links": [
+    {
+     "to": "k.chosen",
+     "rel": "modifies"
+    },
+    {
+     "to": "th.identical-swap",
+     "rel": "supports"
+    },
+    {
+     "to": "th.orth-steps",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CLOSING_THE_GAP.md"
+   ],
    "created": "2026-11-22",
    "updated": "2026-11-22"
   },
@@ -2044,6 +2630,25 @@
    "updated": "2026-11-22",
    "kind": "question",
    "status": "partial"
+  },
+  {
+   "id": "qn.magic-square",
+   "title": "q-number form: Non-contextual values (Mermin-Peres magic square) [Established, FQ]",
+   "statement": "two-qubit Pauli square: rows multiply to +I, columns to -I (Lean MagicSquare.magic_rows/cols)",
+   "links": [
+    {
+     "to": "x.magic-square",
+     "rel": "modifies"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/QNUMBER.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T1",
+   "status": "established"
   },
   {
    "id": "ct.newton",
@@ -2651,6 +3256,36 @@
    "updated": "2026-11-22",
    "kind": "question",
    "status": "open"
+  },
+  {
+   "id": "ct.magic-square",
+   "title": "CT form: Non-contextual values (Mermin-Peres magic square) [Derived]",
+   "statement": "Pre-assigning one value to each of nine compatible-in-context observables is impossible (no magic table); a constructor wins the game with certainty. Quantitative content of the law is lost in the CT form.",
+   "evidence": [
+    "Mermin 1990, Peres 1990; Lean MagicSquare.no_magic_table, classical_best_rate",
+    "docs/formalisation-gap/CT_LITERATURE.md"
+   ],
+   "links": [
+    {
+     "to": "x.magic-square",
+     "rel": "modifies"
+    },
+    {
+     "to": "k.ben-thesis",
+     "rel": "supports"
+    }
+   ],
+   "where": [
+    "docs/formalisation-gap/CT_RESTATEMENT.md"
+   ],
+   "created": "2026-11-22",
+   "updated": "2026-11-22",
+   "kind": "theorem",
+   "tier": "T2",
+   "status": "established",
+   "review": {
+    "state": "unreviewed"
+   }
   }
  ]
 }

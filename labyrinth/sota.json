@@ -9,7 +9,7 @@
    "id": "th.catalogue-counts",
    "group": "Formalised",
    "cls": "Tag counts of the catalogue",
-   "result": "In our tagging: continuum 14, joint sharpness 9, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 22).",
+   "result": "In our tagging: continuum 14, joint sharpness 10, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 23).",
    "status": "proved in Lean (kernel-checked; no human referee)",
    "kind": "proved",
    "refs": [
@@ -352,6 +352,240 @@
    "kind": "proved",
    "refs": [
     "th.planck-freeze"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-magic-table",
+   "group": "Formalised",
+   "cls": "No magic table",
+   "result": "No 3x3 table of integers has all row products +1 and all column products -1.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-magic-table"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.no-magic-table-bool",
+   "group": "Formalised",
+   "cls": "No magic table (parity form)",
+   "result": "No Boolean 3x3 table has even rows and odd columns (decide over 9 variables).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.no-magic-table-bool"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-le-eight",
+   "group": "Formalised",
+   "cls": "Deterministic strategies win at most 8 of 9 rounds",
+   "result": "Every pre-assigned (non-contextual) strategy loses at least one of the 9 row/column questions.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-le-eight"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-eq-eight",
+   "group": "Formalised",
+   "cls": "Some deterministic strategy wins exactly 8",
+   "result": "The 8/9 bound is attained.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-eq-eight"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-rate",
+   "group": "Formalised",
+   "cls": "Best deterministic win rate is 8/9",
+   "result": "Over uniformly random questions the best deterministic win rate is exactly 8/9 (mixtures: convexity, not formalised).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-rate"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-rows",
+   "group": "Formalised",
+   "cls": "Pauli square: rows multiply to +I",
+   "result": "Two-qubit Pauli magic square, row products +I.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-rows"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-cols",
+   "group": "Formalised",
+   "cls": "Pauli square: columns multiply to -I",
+   "result": "Two-qubit Pauli magic square, column products -I.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-cols"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-row-commute",
+   "group": "Formalised",
+   "cls": "Pauli square: rows are compatible",
+   "result": "Observables in one row commute.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-row-commute"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.magic-col-commute",
+   "group": "Formalised",
+   "cls": "Pauli square: columns are compatible",
+   "result": "Observables in one column commute.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.magic-col-commute"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.orth-family-finite",
+   "group": "Formalised",
+   "cls": "Orthogonal families in a finite-dimensional subspace are finite",
+   "result": "Pairwise-orthogonal non-zero vectors in a finite-dimensional subspace W number at most dim W (static half of FD, given finite-dimensional energy-bounded subspaces).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.orth-family-finite"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.speed-limit",
+   "group": "Formalised",
+   "cls": "Quantum speed limit (constant 1)",
+   "result": "A normalised state on levels e_k >= 0 orthogonal to itself at time t has 1 <= <E> t (hbar = 1); Margolus-Levitin's sharp constant is pi/2.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.speed-limit"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.orth-steps",
+   "group": "Formalised",
+   "cls": "Distinguishable steps <= energy x time",
+   "result": "m successive orthogonal states along a trajectory within time T force m <= <E> T (FD per action, derived).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.orth-steps"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.plus-flips",
+   "group": "Formalised",
+   "cls": "The speed limit is not vacuous",
+   "result": "|+> on levels (0,1) is orthogonal to itself at t = pi with <E> = 1/2.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.plus-flips"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.labelled-swap",
+   "group": "Formalised",
+   "cls": "Labelled particles: swap is distinguishable",
+   "result": "On alpha x alpha, (x,y) and (y,x) with x != y can be told apart.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.labelled-swap"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.identical-swap",
+   "group": "Formalised",
+   "cls": "Identical particles: swap is not distinguishable",
+   "result": "On Sym2 alpha, a configuration and its swap are one state; distinguishing them is impossible.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.identical-swap"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.labelled-mixing",
+   "group": "Formalised",
+   "cls": "Labelled counting: mixing factor 4^N (Gibbs paradox)",
+   "result": "(2M)^(2N) = 4^N (M^N)^2: mixing identical labelled gases gives entropy 2N ln 2.",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.labelled-mixing"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.gibbs-ratio",
+   "group": "Formalised",
+   "cls": "Gibbs counting: mixing factor 4^N / C(2N,N)",
+   "result": "With 1/N!, the mixing factor is 4^N / C(2N, N).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.gibbs-ratio"
+   ],
+   "lit": [],
+   "updated": "2026-11-22"
+  },
+  {
+   "id": "th.gibbs-bounds",
+   "group": "Formalised",
+   "cls": "Gibbs mixing entropy is sub-extensive",
+   "result": "1 <= 4^N / C(2N,N) <= 2N + 1, so the mixing entropy is at most ln(2N+1).",
+   "status": "proved in Lean (kernel-checked; no human referee)",
+   "kind": "proved",
+   "refs": [
+    "th.gibbs-bounds"
    ],
    "lit": [],
    "updated": "2026-11-22"

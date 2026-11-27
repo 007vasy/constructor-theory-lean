@@ -62,8 +62,9 @@ plugged in. **No row keeps its full quantitative law inside CT alone.**
 | 20 | Bell local hidden variables | Two separated substrates · information that is locally inaccessible (entanglement) exists · D–M 2015 abstract derives "locally inaccessible information" from superinformation. Locality principle: Deutsch 2013 | **Published** (qualitative core) | The CHSH bound 2√2 (Tsirelson). CT does not fix it |
 | 21 | Classical measurement (no disturbance) | System + meter · measure a variable without perturbing a complementary one: **impossible** · D–M 2015 ("irreducible perturbation caused by measurement"). Deterministic yet unpredictable outcomes: Marletto 2016 (probability) | **Published** | The error–disturbance trade-off (Ozawa) as an inequality |
 | 22 | Universal copying | Superinformation medium · clone the union of two complementary variables: **impossible**. Copying *is* possible for any single information variable · D–M 2015 (no-cloning of superinformation). Lean: in the deterministic theory every variable is an information variable, so there is no superinformation (`functional_no_superinformation`) | **Published** (Lean: the classical half) | Optimal approximate cloning fidelities |
+| 23 | Non-contextual values (magic square) | Nine observables on two qubits per player · pre-assign one context-independent value to each so that rows multiply to +1 and columns to −1: **impossible** (no such table exists). A constructor (two Bell pairs plus Pauli measurements) wins the game with certainty · Mermin 1990; Peres 1990. Lean: `MagicSquare.no_magic_table`, `classical_best_rate` (8/9) | **Derived** | The 98.3% hardware rate; noise thresholds |
 
-**Counts**: **Published 7** (1, 15, 17, 19, 20, 21, 22), **Derived 3** (2, 8, 16),
+**Counts**: **Published 7** (1, 15, 17, 19, 20, 21, 22), **Derived 4** (2, 8, 16, 23),
 **Conjecture 8** (4, 5, 6, 7, 9, 10, 11, 14), **Not expressible yet 4** (3, 12, 13, 18).
 
 ## The honest bottom line

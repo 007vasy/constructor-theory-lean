@@ -1,6 +1,6 @@
 # The formalisation gap — catalogue: classical laws that break down at the quantum level
 
-22 entries, run through Bartosz Naskręcki's harness (see `METHOD.md`). Each classical law
+23 entries (row 23 added 22 Nov 2026), run through Bartosz Naskręcki's harness (see `METHOD.md`). Each classical law
 is a **dead end** in the labyrinth map (`x.<law>` in `labyrinth/knowledge.json`), refuted by the
 cited experiment, with a one-line **lesson** naming the classical assumption that failed. The
 table here and the Lean `catalogue` are two independent encodings, cross-checked on every
@@ -60,6 +60,7 @@ The same tags are encoded as data in `ConstructorTheory/FormalisationGap.lean`
 | 20 | **Local hidden variables / Bell–CHSH**: $\lvert S\rvert \le 2$ | Entangled pairs, measured with space-like separation | Quantum value up to $2\sqrt2$ (Tsirelson); seen loophole-free [17] | Outcomes are pre-existing and local (counterfactual definiteness plus locality) | LOCAL, SHARP |
 | 21 | **Classical measurement**: any state can be measured without disturbance | Non-commuting observables; non-orthogonal states | Measurement back-action; Heisenberg/Ozawa relations | All attributes are sharp and perfectly distinguishable | DIST, SHARP |
 | 22 | **Universal copying**: any state can be cloned, $\lvert\psi\rangle\lvert 0\rangle \mapsto \lvert\psi\rangle\lvert\psi\rangle$ | Any unknown quantum state | No-cloning theorem (Wootters–Zurek; Dieks) [18]; in constructor theory, cloning a superinformation variable is impossible [19] | Every set of states is an information variable | DIST |
+| 23 | **Non-contextual values (Mermin–Peres magic square)**: every observable has one pre-assigned value, whatever compatible observables are measured with it; so the 3×3 magic-square game is won at most 8/9 of the time | Two qubits per player (two Bell pairs), nine Pauli observables | Quantum strategy wins every round (Mermin; Peres) [20]; Google's Willow processor won 98.3% of rounds [21] | No 3×3 table of ±1 has all rows multiplying to +1 and all columns to −1; quantum values are contextual (Kochen–Specker) | SHARP |
 
 ### What is *not* in the list, and why
 

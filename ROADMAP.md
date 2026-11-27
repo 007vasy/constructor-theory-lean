@@ -94,12 +94,13 @@ A coding agent is working on this on a branch. It has not yet been merged to
 
 See `docs/formalisation-gap/CLOSING_THE_GAP.md`. Done: breakdown schema, finite
 distinguishability ⇔ discreteness for deterministic theories, two-qubit superinformation,
-Planck factor (`ConstructorTheory/ClosingTheGap.lean`). Next:
+Planck factor (`ClosingTheGap.lean`); law 23 magic square (`MagicSquare.lean`); FD from a
+quantum speed limit, constant 1 (`SpeedLimit.lean`); identical-particle refutation attempt
+(`IdenticalParticles.lean`, verdict in §6.3). Next:
 
-- Derive finite distinguishability from a quantum speed limit (Mandelstam–Tamm /
-  Margolus–Levitin) in a finite-dimensional Hilbert-space `Theory`, so the chosen model rests
-  on one principle.
-- Try to refute the model on the identical-particle rows (Maxwell–Boltzmann, Gibbs).
+- Spin–statistics in constructor-theoretic terms (can forbidden task (c) and its sign be
+  derived?).
+- Sharp Margolus–Levitin constant π/2.
 - A cost-valued (quantitative) possibility predicate, for rates and coefficients.
 
 ## Related, not in this three-paper queue

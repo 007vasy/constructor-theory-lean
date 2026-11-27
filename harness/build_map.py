@@ -60,11 +60,12 @@ LAWS = [
     ("tunnelling", "Classical tunnelling barrier", "thin barriers, light particles", "Gamow tunnelling", "alpha decay, STM", ["SHARP"]),
     ("einstein", "Einstein field equations at Planck scale", "singularities; l_P", "unknown (quantum gravity); BMV tests", "singularity theorems (internal)", ["SMOOTH", "CONT"]),
     ("qft-uv", "QFT without cutoff (UV divergences)", "short distances", "renormalisation; EFT", "divergent loop integrals (internal)", ["SMOOTH"]),
+    ("magic-square", "Non-contextual values (Mermin-Peres magic square)", "two Bell pairs, nine Pauli observables", "contextual quantum observables; win rate 1 vs 8/9", "Google Quantum AI, Science 394, 870 (2026): 98.3% win rate", ["SHARP"]),
 ]
 
 LEAN_THEOREMS = [
     ("th.catalogue-counts", "continuum_most_common", "Tag counts of the catalogue",
-     "In our tagging: continuum 14, joint sharpness 9, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 22)."),
+     "In our tagging: continuum 14, joint sharpness 10, smooth 4, labelled 3, distinguishability 2, local realism 1 (of 23)."),
     ("th.no-continuum-iv", "no_continuum_info_variable_of_finite", "No continuum information variable on a finite substrate",
      "A substrate with finitely many states has no family of non-empty pairwise-disjoint attributes indexed by R."),
     ("th.droplet", "finite_substrate_misses_interval", "Kuypers' droplet (toy)",
@@ -118,6 +119,41 @@ LEAN_THEOREMS = [
      "x/(e^x - 1) <= 1 for x > 0: a quantised mode never holds more than k_B T on average."),
     ("th.planck-freeze", "tendsto_planckFactor_atTop", "High-frequency modes freeze out",
      "x/(e^x - 1) -> 0 as x -> infinity: the ultraviolet catastrophe is removed."),
+    # Law 23: Mermin-Peres magic square (ConstructorTheory/MagicSquare.lean)
+    ("th.no-magic-table", "MagicSquare.no_magic_table", "No magic table",
+     "No 3x3 table of integers has all row products +1 and all column products -1."),
+    ("th.no-magic-table-bool", "MagicSquare.no_magic_table_bool", "No magic table (parity form)",
+     "No Boolean 3x3 table has even rows and odd columns (decide over 9 variables)."),
+    ("th.magic-le-eight", "MagicSquare.classical_wins_le_eight", "Deterministic strategies win at most 8 of 9 rounds",
+     "Every pre-assigned (non-contextual) strategy loses at least one of the 9 row/column questions."),
+    ("th.magic-eq-eight", "MagicSquare.classical_wins_eq_eight", "Some deterministic strategy wins exactly 8",
+     "The 8/9 bound is attained."),
+    ("th.magic-rate", "MagicSquare.classical_best_rate", "Best deterministic win rate is 8/9",
+     "Over uniformly random questions the best deterministic win rate is exactly 8/9 (mixtures: convexity, not formalised)."),
+    ("th.magic-rows", "MagicSquare.magic_rows", "Pauli square: rows multiply to +I", "Two-qubit Pauli magic square, row products +I."),
+    ("th.magic-cols", "MagicSquare.magic_cols", "Pauli square: columns multiply to -I", "Two-qubit Pauli magic square, column products -I."),
+    ("th.magic-row-commute", "MagicSquare.magic_row_commute", "Pauli square: rows are compatible", "Observables in one row commute."),
+    ("th.magic-col-commute", "MagicSquare.magic_col_commute", "Pauli square: columns are compatible", "Observables in one column commute."),
+    # FD from quantum dynamics (ConstructorTheory/SpeedLimit.lean)
+    ("th.orth-family-finite", "SpeedLimit.orthogonal_family_finite", "Orthogonal families in a finite-dimensional subspace are finite",
+     "Pairwise-orthogonal non-zero vectors in a finite-dimensional subspace W number at most dim W (static half of FD, given finite-dimensional energy-bounded subspaces)."),
+    ("th.speed-limit", "SpeedLimit.speed_limit", "Quantum speed limit (constant 1)",
+     "A normalised state on levels e_k >= 0 orthogonal to itself at time t has 1 <= <E> t (hbar = 1); Margolus-Levitin's sharp constant is pi/2."),
+    ("th.orth-steps", "SpeedLimit.orthogonal_steps_le", "Distinguishable steps <= energy x time",
+     "m successive orthogonal states along a trajectory within time T force m <= <E> T (FD per action, derived)."),
+    ("th.plus-flips", "SpeedLimit.plus_flips", "The speed limit is not vacuous",
+     "|+> on levels (0,1) is orthogonal to itself at t = pi with <E> = 1/2."),
+    # Identical particles (ConstructorTheory/IdenticalParticles.lean)
+    ("th.labelled-swap", "IdenticalParticles.labelled_swap_possible", "Labelled particles: swap is distinguishable",
+     "On alpha x alpha, (x,y) and (y,x) with x != y can be told apart."),
+    ("th.identical-swap", "IdenticalParticles.identical_swap_impossible", "Identical particles: swap is not distinguishable",
+     "On Sym2 alpha, a configuration and its swap are one state; distinguishing them is impossible."),
+    ("th.labelled-mixing", "IdenticalParticles.labelled_mixing", "Labelled counting: mixing factor 4^N (Gibbs paradox)",
+     "(2M)^(2N) = 4^N (M^N)^2: mixing identical labelled gases gives entropy 2N ln 2."),
+    ("th.gibbs-ratio", "IdenticalParticles.gibbs_mixing_ratio", "Gibbs counting: mixing factor 4^N / C(2N,N)",
+     "With 1/N!, the mixing factor is 4^N / C(2N, N)."),
+    ("th.gibbs-bounds", "IdenticalParticles.gibbs_mixing_ratio_bounds", "Gibbs mixing entropy is sub-extensive",
+     "1 <= 4^N / C(2N,N) <= 2N + 1, so the mixing entropy is at most ln(2N+1)."),
 ]
 
 # Lean file per theorem (default: FormalisationGap.lean)
@@ -134,11 +170,24 @@ LEAN_FILE = {
         "qubit_basis_clone_possible", "qubit_rotated_clone_possible",
         "qubit_nonorthogonal_clone_impossible", "copying_law_breaks_in_qubit",
         "qubit_superinformation", "planckFactor_le_one", "tendsto_planckFactor_atTop")},
+    **{n: "ConstructorTheory/MagicSquare.lean" for n in (
+        "MagicSquare.no_magic_table", "MagicSquare.no_magic_table_bool",
+        "MagicSquare.classical_wins_le_eight", "MagicSquare.classical_wins_eq_eight",
+        "MagicSquare.classical_best_rate", "MagicSquare.magic_rows", "MagicSquare.magic_cols",
+        "MagicSquare.magic_row_commute", "MagicSquare.magic_col_commute")},
+    **{n: "ConstructorTheory/SpeedLimit.lean" for n in (
+        "SpeedLimit.orthogonal_family_finite", "SpeedLimit.speed_limit",
+        "SpeedLimit.orthogonal_steps_le", "SpeedLimit.plus_flips")},
+    **{n: "ConstructorTheory/IdenticalParticles.lean" for n in (
+        "IdenticalParticles.labelled_swap_possible", "IdenticalParticles.identical_swap_impossible",
+        "IdenticalParticles.labelled_mixing", "IdenticalParticles.gibbs_mixing_ratio",
+        "IdenticalParticles.gibbs_mixing_ratio_bounds")},
 }
 
 # Constructor-theoretic restatements (docs/formalisation-gap/CT_RESTATEMENT.md):
 # slug -> (tag, short statement, source or reasoning)
 CT = {
+    "magic-square": ("Derived", "Pre-assigning one value to each of nine compatible-in-context observables is impossible (no magic table); a constructor wins the game with certainty", "Mermin 1990, Peres 1990; Lean MagicSquare.no_magic_table, classical_best_rate"),
     "newton": ("Published", "Preparing position and momentum both sharp is impossible (superinformation)", "Deutsch-Marletto 2015, arXiv:1405.5563"),
     "liouville": ("Derived", "No phase-space-point attribute can be prepared or measured", "from row newton; hybrid argument Marletto-Vedral arXiv:1703.04325"),
     "tunnelling": ("Not expressible", "No CT task statement for finite-probability transmission", "CT_RESTATEMENT.md row 3"),
@@ -165,6 +214,7 @@ CT = {
 
 # q-number restatements (docs/formalisation-gap/QNUMBER.md): slug -> (status, form, short statement)
 QNUMBER = {
+    "magic-square": ("Established", "FQ", "two-qubit Pauli square: rows multiply to +I, columns to -I (Lean MagicSquare.magic_rows/cols)"),
     "newton": ("Established", "FQ", "Heisenberg EoM with [x,p]=i hbar; Ehrenfest limit"),
     "liouville": ("Established", "FQ", "von Neumann equation; Moyal -> Poisson as hbar -> 0"),
     "tunnelling": ("Established", "FQ", "Schrodinger/Heisenberg with V(x); WKB transmission"),
@@ -231,7 +281,7 @@ def build():
         nodes.append({
             "id": f"k.{code.lower()}", "kind": "conjecture", "tier": "T5", "status": "open",
             "title": title, "statement": stmt,
-            "test": f"Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently {n}/22 rows carry this tag.",
+            "test": f"Find a classical law that fails at the quantum level for a reason not covered by the six patterns; currently {n}/{len(LAWS)} rows carry this tag.",
             "links": [{"to": "k.ben-thesis", "rel": "supports"}],
             "where": ["docs/formalisation-gap/PATTERN.md"], "created": TODAY, "updated": TODAY,
         })
@@ -293,10 +343,33 @@ def build():
          "test": "Find a catalogue row whose breakdown needs neither a forbidden copy/sharpening nor a forbidden fine distinction. Live candidates: Maxwell-Boltzmann and Gibbs (identical particles), which carry neither tag.",
          "links": [{"to": "k.c1-fd", "rel": "uses"}, {"to": "k.c2-si", "rel": "uses"}, {"to": "k.c4-schema", "rel": "uses"}],
          "where": ["docs/formalisation-gap/CLOSING_THE_GAP.md"], "created": TODAY, "updated": TODAY},
-        {"id": "q.fd-from-ml", "kind": "question", "status": "open",
+        {"id": "q.fd-from-ml", "kind": "question", "status": "answered",
          "title": "Derive FD from the Margolus-Levitin bound in Lean",
          "statement": "In a finite-dimensional Hilbert-space Theory, prove that orthogonalisation takes time >= pi*hbar/(2E), so a bounded-energy, bounded-time task distinguishes finitely many states.",
+         "note": "Partly answered (SpeedLimit.lean): speed limit with constant 1 (not pi/2), step count m <= <E>T, static half needs finite-dimensional energy-bounded subspaces (assumed).",
+         "links": [{"to": "th.orth-steps", "rel": "answers"}], "created": TODAY, "updated": TODAY},
+        {"id": "q.ml-sharp", "kind": "question", "status": "open",
+         "title": "Sharp Margolus-Levitin constant pi/2 in Lean",
+         "statement": "Prove cos x >= 1 - (2/pi)(x + sin x) for x >= 0 and hence t >= pi/(2<E>).",
          "created": TODAY, "updated": TODAY},
+        {"id": "x.two-tasks-complete", "kind": "deadend", "status": "refuted",
+         "title": "'Two forbidden tasks' is complete",
+         "statement": "Claim: every catalogue law fails at a forbidden copy/sharpening (a) or a forbidden fine distinction (b).",
+         "lesson": "Maxwell-Boltzmann and Gibbs fail at neither: they need the symmetrisation postulate, a third forbidden task (c) 'distinguishing identical substrates from their permutations'. Fermi-Dirac needs spin-statistics beyond that.",
+         "evidence": ["ConstructorTheory/IdenticalParticles.lean", "docs/formalisation-gap/CLOSING_THE_GAP.md"],
+         "where": ["docs/formalisation-gap/CLOSING_THE_GAP.md"], "created": TODAY, "updated": TODAY},
+        {"id": "x.fd-from-superinformation", "kind": "deadend", "status": "refuted",
+         "title": "FD follows from superinformation alone",
+         "statement": "Claim: task (b) reduces to task (a).",
+         "lesson": "Only via full Hilbert-space quantum theory plus energy-generated dynamics (speed limit), plus a spectral assumption for the static half; superinformation alone does not fix Hilbert space (Spekkens).",
+         "evidence": ["ConstructorTheory/SpeedLimit.lean"], "where": ["docs/formalisation-gap/CLOSING_THE_GAP.md"],
+         "created": TODAY, "updated": TODAY},
+        {"id": "k.chosen-v2", "kind": "conjecture", "tier": "T5", "status": "open",
+         "title": "Revised model: quantum kinematics + energy dynamics + exchange symmetry",
+         "statement": "Classical laws fail at three forbidden tasks: (a) copying/jointly sharpening arbitrary attributes, (b) unbounded distinction with bounded action (now derived from (a)'s Hilbert-space form plus dynamics, up to a spectral assumption), (c) distinguishing identical substrates from their permutations.",
+         "test": "A catalogue law failing at none of (a)-(c); or a perfect copier, an over-the-speed-limit distinguisher, or a measurable swap of identical particles.",
+         "links": [{"to": "k.chosen", "rel": "modifies"}, {"to": "th.identical-swap", "rel": "supports"}, {"to": "th.orth-steps", "rel": "supports"}],
+         "where": ["docs/formalisation-gap/CLOSING_THE_GAP.md"], "created": TODAY, "updated": TODAY},
         {"id": "q.bell", "kind": "question", "status": "open",
          "title": "CHSH <= 2 for local models, Tsirelson for quantum",
          "statement": "Formalise the classical CHSH bound (finite, decidable) and state the quantum violation.",
@@ -351,7 +424,7 @@ def build():
     knowledge = {
         "schema": 1,
         "meta": {"title": "The formalisation gap", "eyebrow": "constructor-theory-lean · labyrinth map",
-                 "subtitle": "22 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."},
+                 "subtitle": "23 classical laws that break at the quantum level (dead ends), six patterns (conjectures), q-number and constructor-theoretic restatements, Lean results (T2)."},
         "nodes": nodes,
     }
     sota = {

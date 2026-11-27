@@ -186,16 +186,18 @@ exactly the first task of (a) or (b) it relies on (C4). The single constant ħ i
 one distinguishable step. Nothing in the explanation can be retuned per law: change the menu,
 the constant or the bound and an observed result breaks.
 
-**Coverage of the 22 laws** (by the catalogue tags; the tagging is ours, T5):
+**Coverage of the laws** (by the catalogue tags; the tagging is ours, T5). Row 23 (magic square)
+was added after the model was proposed; see §6.1.
 
 | Forbidden task | Rows (repo catalogue order) | Count |
 |---|---|---|
-| (a) only | Liouville, Bell, measurement, copying, tunnelling | 5 |
+| (a) only | Liouville, Bell, measurement, copying, tunnelling, magic square (row 23) | 6 |
 | (b) only | Rayleigh–Jeans, equipartition, Dulong–Petit, photoelectric, Drude, Fourier, Navier–Stokes, third law, Einstein, QFT UV | 10 |
 | both | Newton, Larmor, magnetism, Stern–Gerlach, vacuum | 5 |
 | neither | **Maxwell–Boltzmann, Gibbs** (identical particles) | 2 |
 
-So 20 of 22 rows are covered. The two uncovered rows are the **live refutation targets**.
+So 20 of the original 22 rows are covered (21 of 23 with row 23). The two uncovered rows were the
+**live refutation targets**; §6.3 reports the attempt, which succeeded.
 Identical-particle statistics is not obviously a forbidden copy or a forbidden fine
 distinction. If no reading in terms of (a) or (b) exists, the model needs a third principle, or
 it is wrong in its claim to completeness. Einstein and QFT UV are covered only in the weak
@@ -207,7 +209,8 @@ and Bell violations should be impossible, which is refuted. Drop
 theory, and (b) may be derivable from (a) plus dynamics, a redundancy), R 2 (20/22 rows plus
 Bekenstein, Lloyd and the droplet), K 2 (perfect copier, over-the-bound distinguisher, or a
 reading of the identical-particle rows that uses neither). **9/10 by our rubric**, held at
-**T5**: a conjecture with tests, not an established theory.
+**T5**: a conjecture with tests, not an established theory. **Re-scored in §6.4 after the
+refutation attempt.**
 
 **What it still does not do.** It does not derive ħ's value, spin-statistics, or rates (C3 is
 needed for those), and it does not show that (a) and (b) are independent.
@@ -239,7 +242,7 @@ Deutsch–Marletto (no permutation tasks). FD uses energy shells, not time or ac
 Margolus–Levitin link is not formalised. The Planck mean-energy formula is defined, not
 derived.
 
-## 5. Next most valuable step
+## 5. Next most valuable step (as of the first pass; done in §6)
 
 **Derive FD from quantum dynamics in Lean.** In a finite-dimensional Hilbert-space `Theory`,
 prove the Mandelstam–Tamm / Margolus–Levitin bound (time to orthogonality is at least of order
@@ -248,6 +251,134 @@ goes through, (b) becomes a theorem of (a) plus "energy generates time translati
 model then rests on **one** principle, which is the most hard-to-vary outcome available. In
 parallel: attack the two uncovered rows (Maxwell–Boltzmann, Gibbs) as a deliberate attempt to
 refute the model.
+
+## 6. Follow-up (22 Nov 2026, evening): three tests of the chosen model
+
+Ben approved all four next steps. Results below; Lean files `MagicSquare.lean`,
+`SpeedLimit.lean`, `IdenticalParticles.lean` (no `sorry`, no new axioms, all audited by
+`harness/run_checks.py`).
+
+### 6.1 Law 23, the Mermin–Peres magic square: a reach test the model passes
+
+**[fact]** No 3×3 table of ±1 values has every row multiplying to +1 and every column to −1:
+multiply all nine entries row by row and you get +1, column by column and you get −1 (Mermin,
+PRL 65, 3373 (1990); Peres, Phys. Lett. A 151, 107 (1990)). In the game version, a player
+given a row and a player given a column who answer from any pre-written plan win at most 8 of the
+9 question pairs. With two shared Bell pairs and the nine two-qubit Pauli observables they win
+every round. Google Quantum AI report a **98.3%** win rate on their Willow processor (Science
+394, 870 (2026), doi:10.1126/science.aec3042; Google Research blog, 19 Nov 2026, "A game you
+cannot win unless you have a quantum computer").
+
+**[Lean]**
+- `MagicSquare.no_magic_table`: no integer table at all has row products +1 and column products
+  −1 (the entries need not even be ±1). `no_magic_table_bool`: the parity form, by `decide`.
+- `MagicSquare.classical_wins_le_eight`, `classical_wins_eq_eight`, `classical_best_rate`: every
+  deterministic (pre-assigned) strategy loses at least one of the 9 rounds, and one wins exactly
+  8, so the best deterministic rate is 8/9. Shared randomness is a mixture of deterministic
+  strategies and cannot beat that; this convexity step is argued, not formalised.
+- `MagicSquare.magic_rows`, `magic_cols`: the Pauli square's rows multiply to +I and columns to
+  −I. `magic_row_commute`, `magic_col_commute`: each row and each column is a set of commuting
+  (jointly measurable) observables. The quantum winning probability itself is not formalised.
+
+**Verdict.** Covered by forbidden task (a). The classical law fails exactly at the task
+"pre-assign context-independent values to all nine observables", which is a form of joint
+sharpening. It does sharpen (a): the forbidden assignment is not only to *non-commuting*
+pairs but to observables that commute within each context (Kochen–Specker contextuality). That
+reading was already implicit in "jointly sharpening arbitrary attributes". Row 23 was not used
+to build the model, so it counts toward reach (R), though the result itself dates from 1990.
+
+### 6.2 Does forbidden task (b) reduce to (a) plus dynamics? Partly.
+
+**[Lean] proved (`SpeedLimit.lean`)**, taking the standard quantum criterion that pure states
+are perfectly distinguishable iff orthogonal:
+
+- `orthogonal_family_finite` (**static half**): in any complex inner-product space, pairwise-
+  orthogonal non-zero vectors inside a finite-dimensional subspace W are finitely many, at most
+  dim W.
+- `speed_limit` (**dynamical half**, ħ = 1): a normalised state on energy levels eₖ ≥ 0
+  evolving as ψₖ ↦ e^{−ieₖt}ψₖ cannot be orthogonal to itself before t = 1/⟨E⟩, i.e.
+  ⟨ψ, U(t)ψ⟩ = 0 ⇒ 1 ≤ ⟨E⟩t. This is a Margolus–Levitin-type bound with constant 1 instead of
+  their sharp π/2. The proof uses only |e^{iθ} − 1| ≤ |θ|.
+- `orthogonal_steps_le`: m successive mutually orthogonal states along a trajectory in elapsed
+  time T force m ≤ ⟨E⟩T. So **distinguishable steps per unit time are bounded by the energy**:
+  the "per action" form of FD, derived instead of postulated.
+- `plus_flips`: the bound is not vacuous. |+⟩ on levels (0, 1) is orthogonal to itself at t = π,
+  where ⟨E⟩ = 1/2 (Margolus–Levitin is tight there; ours is off by π/2).
+
+**Assumed, not proved.**
+1. The dynamics is written in the energy eigenbasis (general in finite dimension by the spectral
+   theorem, not re-proved).
+2. The static half needs the energy-bounded subspace to be **finite-dimensional**, i.e. finitely
+   many levels below each energy. That is true for confined systems such as the oscillator and the
+   box, but it is a property of the Hamiltonian (confinement), not of superinformation. A free
+   particle in infinite space violates it.
+3. "Perfectly distinguishable = orthogonal" is the quantum criterion, used as a definition.
+
+**Verdict.** (b)'s time/action half follows from Hilbert-space quantum theory plus "energy
+generates time translation". It no longer needs a separate principle, and the constant is fixed
+by the theory rather than chosen. But the reduction is to **quantum theory** (C2's endpoint), not
+to superinformation alone (Spekkens' toy theory has superinformation-like no-cloning without
+Hilbert space). The static half still rests on a confinement assumption. Logged as dead end
+`x.fd-from-superinformation` ("(b) follows from (a) alone": no) and question `q.fd-from-ml`
+(partly answered). The sharp π/2 constant is open (`q.ml-sharp`).
+
+### 6.3 The refutation attempt: Maxwell–Boltzmann and Gibbs
+
+These rows fail because classical statistics counts a configuration and its permutation as
+different states (labelled counting: M^N configurations for N particles in M cells). We tried three ways to get that from the model.
+
+1. **Via (b), finite distinguishability. Fails.** FD bounds *how many* states are
+   distinguishable per energy and time. It is silent on whether swapping two particles gives a new
+   state: a gas of two distinguishable species obeys FD and still counts swaps. FD would forbid
+   labels only if labels cost energy, and they don't.
+2. **Via (a), no sharp trajectories. Fails as a derivation.** The textbook heuristic is that
+   without sharp trajectories you cannot track which particle is which. But distinguishable
+   quantum particles (an electron and a muon) also lack trajectories and stay distinguishable,
+   and well-separated identical particles can in practice be tracked. What does the work is the
+   **symmetrisation postulate**: the state space of identical particles is the symmetric or
+   antisymmetric subspace. That is independent of (a).
+3. **A third forbidden task. Works, at a price.** (c) *Distinguishing a configuration of
+   identical substrates from any permutation of it is impossible.* **[Lean]**
+   `IdenticalParticles.labelled_swap_possible` (on α × α the swap is distinguishable) versus
+   `identical_swap_impossible` (on the symmetric substrate `Sym2 α` it is one state, so the task
+   is impossible). The content is in the choice of substrate, which is the postulate. Counting
+   with (c): `labelled_mixing` shows labelled counting multiplies by 4^N on mixing two equal
+   samples (entropy 2N ln 2, the Gibbs paradox). `gibbs_mixing_ratio` and
+   `gibbs_mixing_ratio_bounds` show Gibbs' 1/N! gives 4^N / C(2N, N), between 1 and 2N + 1
+   (entropy at most ln(2N + 1), zero per particle). (c) explains Gibbs and Bose–Einstein
+   counting. It does **not** fix the sign: Fermi–Dirac needs *antisymmetry* (Pauli exclusion),
+   which comes from spin–statistics in relativistic QFT, not from (c).
+
+**Verdict: the model as stated is refuted on completeness.** "Two forbidden tasks" does not
+explain Maxwell–Boltzmann or Gibbs. They need a third forbidden task (c), which we did not derive
+from (a) or (b), and Fermi–Dirac needs spin–statistics on top of that. Logged as dead end
+`x.two-tasks-complete`. The Drude row also leans on Fermi statistics (Sommerfeld), so its (b)
+coverage was only partial.
+
+### 6.4 Rubric re-scored
+
+| Model | F | V | R | K | Total | Note |
+|---|---|---|---|---|---|---|
+| Two forbidden tasks (§3), as first scored | 3 | 2 | 2 | 2 | 9 | Before the tests |
+| Two forbidden tasks, after §6 | 3 | 2 | 1 | 2 | **8**, and **refuted as complete** | Row 23 passes, but the identical-particle rows fail, so reach drops |
+| **v2: quantum kinematics + energy dynamics + exchange symmetry** (a), (b) derived up to confinement, (c) | 2 | 2 | 2 | 2 | **8** | F drops: (c) was added after a failure and the confinement assumption remains. V stays at 2: dropping (a), the dynamics or (c) each breaks something observed (Bell/magic square, UV catastrophe, degenerate gases/BEC), but the fermion sign is not fixed by the model. R 2: 23/23 rows qualitatively, row 23 predicted. K 2. |
+
+v2 (map node `k.chosen-v2`, T5) is the honest current best. The one-paragraph explanation
+becomes: *classical physics assumes three kinds of task are possible that physics forbids:
+copying or jointly sharpening arbitrary attributes (even commuting ones, row 23), resolving
+unboundedly many states with bounded energy and time (now derived from quantum dynamics up to
+confinement), and telling identical things apart by their labels. Each classical law fails at
+the first of these it uses.* It is less hard to vary than the two-task version hoped to be,
+because (c) is a separate postulate and its sign is borrowed from relativistic QFT.
+
+### 6.5 Next most valuable steps
+
+1. **Spin–statistics in constructor-theoretic terms**: can (c) plus its sign be derived from
+   locality and rotation (as relativistic QFT does), which would remove the post-hoc principle?
+   This is the step most likely to raise F back to 3.
+2. Sharp Margolus–Levitin constant π/2 in Lean (`q.ml-sharp`).
+3. C3 (quantitative possibility) for one rate, e.g. a tunnelling time as the least time for the
+   barrier-crossing task.
 
 ## Sources (all opened on 22 Nov 2026)
 
@@ -268,3 +399,7 @@ refute the model.
 - Ll. Masanes & J. Oppenheim, Nat. Commun. 8, 14538 (2017), arXiv:1412.3828.
 - W. K. Wootters & W. H. Zurek, Nature 299, 802 (1982), doi:10.1038/299802a0.
 - D. Dieks, Phys. Lett. A 92, 271 (1982), doi:10.1016/0375-9601(82)90084-6.
+- N. D. Mermin, PRL 65, 3373 (1990), doi:10.1103/PhysRevLett.65.3373.
+- A. Peres, Phys. Lett. A 151, 107 (1990), doi:10.1016/0375-9601(90)90172-K.
+- Google Quantum AI and collaborators, Science 394, 870–874 (2026), doi:10.1126/science.aec3042, arXiv:2512.02284.
+- S. Kumar & R. Cortiñas, "A game you cannot win unless you have a quantum computer", Google Research blog, 19 Nov 2026, <https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/>.

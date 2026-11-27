@@ -102,6 +102,47 @@ Planck factor (`ConstructorTheory/ClosingTheGap.lean`). Next:
 - Try to refute the model on the identical-particle rows (Maxwell–Boltzmann, Gibbs).
 - A cost-valued (quantitative) possibility predicate, for rates and coefficients.
 
+## Candidate law from gravity: finite distinguishability of a bounded causal diamond (opened 27 Nov 2026)
+
+Source: Venkatesa Chandrasekaran, *An algebraic quantization of gravity from the null cone*,
+[arXiv:2611.34924](https://arxiv.org/abs/2611.34924) (23 Nov 2026). The full CT restatement is in
+[`docs/reformulations/null-cone-quantization-CT.md`](docs/reformulations/null-cone-quantization-CT.md).
+
+- **Candidate law L-NC1.** For a causal diamond `D` whose gravitational clock reading is at most
+  `ℓ`, perfectly distinguishing infinitely many attributes is impossible. Paper: `H_D =
+  1[0,ℓ(D)](ū*) H_ω` (5.1)–(5.2) is finite-dimensional ((5.38)–(5.39c), §5.2, App. D.2). The area
+  spectrum is discrete (5.40) and bounded by `A ≤ 4πℓ(D)²/(1−ε)²` (5.21d).
+- **Ties to forbidden task (b) / `SpeedLimit.lean`.** `orthogonal_family_finite` (PR #6) proves FD
+  *given* a finite-dimensional bounded subspace, and it flags that proviso as an assumption about
+  the Hamiltonian. L-NC1 is a quantum-gravity claim that discharges the proviso, with the bounded
+  resource being size (clock reading) instead of energy.
+- **Assumed by the paper (not proved).** 4D vacuum GR only (3.19), so no matter. It uses a chosen
+  Gaussian state (4.7) and a chosen pure extension `ω` (4.16), whose `ω`-independence is deferred
+  (footnote 20). The finiteness proof uses a one-loop two-point function on a smooth background
+  ((5.27)–(5.29)). The existence of states (5.19) is "strong evidence" with a heuristic step
+  (footnote 18).
+- **Not proved in general.** An explicit bound `dim H_D ≲ exp(πℓ²/((1−ε)²ℓ_P²))`. The paper has
+  it only asymptotically, for large black-hole interiors ((5.64), footnote 24), plus a one-loop
+  bound (D.46c). Keep this as conjecture L-NC2.
+- **Variation test.** In 2D JT gravity the same bounded diamond has infinitely many orthogonal
+  states ((2.14)–(2.17)), so FD needs 4D shear–focusing. This is a "hard to vary" data point.
+- **Lean target (statements sketched in the doc, no `.lean` yet).** A structure carrying
+  `FiniteDimensional ℂ (clockShell ℓ)` as a hypothesis. Prove `FDOn` for it via
+  `orthogonal_family_finite`, and prove that FD fails for a JT-style infinite-dimensional shell.
+  This is honest bookkeeping: the physics sits in the hypothesis.
+
+### Retry with a future model (null-cone CT reformulation)
+
+Redo the CT reformulation and the Lean formalization above with a stronger model. This pass could
+not do the following:
+- re-verify the equation numbers against the typeset PDF (it worked from garbled `pdftotext`);
+- derive §5.2 finiteness from CT principles, instead of translating it;
+- find a non-asymptotic explicit bound on `dim H_D`;
+- write and check the Lean statements with full proofs (no `sorry`) against `FDOn` and
+  `SpeedLimit.lean`;
+- extend the construction to matter, to test whether it says anything about the
+  Marletto–Vedral witness or BMV rates.
+
 ## Related, not in this three-paper queue
 
 Constructor theory of time — David Deutsch and Chiara Marletto,

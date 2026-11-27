@@ -167,7 +167,7 @@ sequel than M3 or M4, because it uses only the milestone 1 vocabulary. It is als
 lets L-NC1 measure diamond size as a *duration*: see §5 of the null-cone doc, which maps the
 light-ray clock (3.27), with `Ξ ≥ 0` (3.26c), onto D&M timers.
 
-- **Provable now from the repo** (the null-task lemma was checked in a scratch build).**
+- **Provable now from the repo** (the null-task lemma was checked in a scratch build).
   - D&M §5's argument that the null task is possible. Under `SerialCompositionPrinciple`, if
     `{a → b}` and `{c → d}` are possible with `b ≠ c`, then their serial composite is
     `Task.empty S` and is possible. The repo's `serial` matches on attribute *equality*, so

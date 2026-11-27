@@ -1,0 +1,21 @@
+# UNTESTED DRAFT. Check field names against the Harbor version pinned in Legion's pyproject.toml
+# (https://docs.harborframework.com/tasks/overview) before publishing.
+version = "1.0"
+
+[metadata]
+author_name = "ben"
+difficulty = "hard"
+category = "formal-mathematics"
+tags = ["lean4", "mathlib", "constructor-theory", "swarm"]
+
+[agent]
+timeout_sec = 75600          # 21 h, matching limits.trial_hours
+
+[verifier]
+timeout_sec = 900
+
+[environment]
+build_timeout_sec = 3600     # elan + Mathlib cache download
+cpus = 2
+memory_mb = 16384
+storage_mb = 40960

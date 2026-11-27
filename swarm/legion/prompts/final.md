@@ -1,0 +1,1 @@
+The run is ending. Save your notes and finish or update your current PR if useful. If you abandoned an approach, make sure it is in docs/swarm/DEAD_ENDS.md. Leave a short handoff in your thread with the PR number, the judge line and what remains. Do not start new work. End with a short plain-text reply.

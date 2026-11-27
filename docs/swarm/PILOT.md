@@ -1,8 +1,9 @@
 # Swarm pilot: a small Lean-judged agent swarm on Grok Build
 
-**Status: draft. Nothing has run with a model.** The launch script's plumbing was dry-run on the box with
-a stub agent; no `grok` session has started (the CLI is installed but not signed in). Running it needs
-Ben's OK on §8. Costs: `COSTS.md`. Judge: `JUDGE.md`. Prompts: `SYSTEM_PROMPT.md`, `lanes/`,
+**Status (updated 27 Nov 2026, Australia/Sydney):** draft launcher and plan. A 1-agent
+calibration run already happened on Ben's workstation on 26 Nov (`CALIBRATION.md`); no
+multi-agent run has started. A 3-agent × 2 h Grok Build run still needs Ben's OK and must
+not be launched from this merge. Costs: `COSTS.md`. Judge: `JUDGE.md`. Prompts: `SYSTEM_PROMPT.md`, `lanes/`,
 `swarm/grok/board-rules.md`, `swarm/grok/round.md`. Launcher: `swarm/grok/launch.sh`.
 
 ## 1. Why, and why Grok Build
@@ -25,7 +26,7 @@ the pilot uses a **folder of markdown files as the board** instead. msgboard can
 
 ## 2. Goal
 
-One open problem from `docs/formalisation-gap/CLOSING_THE_GAP.md` (§6, on branch `next-steps`, PR #6):
+One open problem from `docs/formalisation-gap/CLOSING_THE_GAP.md` (§6, on main since PR #6 merged 27 Nov as `88898c6`):
 the two-forbidden-tasks model was **refuted as complete** by Maxwell–Boltzmann and Gibbs. The revised
 model adds a third forbidden task after the failure, which costs it a point (8/10).
 
@@ -59,7 +60,7 @@ the build lock. 5 or more needs a bigger machine.
 
 - `$SWARM_HOME` = `/workspace/ctl-swarm` (a name the box keeps across resets). It holds a fresh clone of
   the public repo with **push disabled**, the integration branch `swarm-run` (created from
-  `origin/next-steps`, i.e. PR #6's branch, **because PR #6 is not merged**), one git worktree per agent
+  `origin/main`; until 27 Nov the default was `origin/next-steps` because PR #6 was still open), one git worktree per agent
   (`wt/a0-derive`, ...) on branch `agent/<name>`, the board, logs, a token ledger and a frozen copy of
   the judge that no agent can write.
 - Each round is one headless session:
@@ -77,8 +78,9 @@ the build lock. 5 or more needs a bigger machine.
   assistant opens **one** PR from it.
 
 Dry run on the box (26 Nov, stub agent in place of `grok`): setup, worktrees, the build lock, two steward
-merges per agent with `JUDGE PASS 46/46`, the token-budget stop and the kill switch all worked. The
-real `grok` invocation, the sandbox profile and the deny rules are **untested**.
+merges per agent with `JUDGE PASS 46/46`, the token-budget stop and the kill switch all worked. A later
+1-agent calibration on Ben's workstation (`CALIBRATION.md`) ran a real `grok` session under the
+`ctlswarm` sandbox; the deny rules and preflight checks held there.
 
 ## 5. Rules for agents
 
@@ -118,11 +120,12 @@ tokens per agent-hour, cache hit rate.
    token outside the pool.
 2. **Accept the pool risk**, or choose the API key instead: the swarm shares the weekly pool with his
    Grok Bot agents, Grok chat and Cursor (`COSTS.md` §4).
-3. **Calibration run:** 1 agent, ≤20 minutes, `TOKEN_BUDGET=3000000`, one narrow task (state T3 as a
-   constructor-theory definition in a new Lean file that passes the judge). He reads `/usage` before and
-   after.
-4. **Then caps for a real run**: agents (≤3 on the box), hours, `TOKEN_BUDGET`.
-5. **PR #6** stays unmerged; the pilot builds on its branch. Merging it first is cleaner but not required.
+3. **Calibration run:** already done, 26 Nov, on the workstation (`CALIBRATION.md`). 1 agent, 17 min,
+   `TOKEN_BUDGET=3000000`, produced `ConstructorTheory/Swarm/ThirdTask.lean` (PR #8).
+4. **Caps for a real run** (still needs Ben's OK; do not launch from this merge): agents (≤3), hours,
+   `TOKEN_BUDGET`. The recommendation from the calibration is 3 agents × 2 h, `TOKEN_BUDGET=70000000`,
+   `MAX_TURNS=40`.
+5. **PR #6** is now merged into main (`88898c6`, 27 Nov). The launcher's default `BASE_REF` is `origin/main`.
 
 ## 9. Risks
 

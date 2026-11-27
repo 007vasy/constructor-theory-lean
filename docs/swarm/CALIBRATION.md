@@ -11,7 +11,7 @@ A preflight check showed that `~/.ssh` is denied, the network is blocked, and wr
   - The agent wrote it on turn 30 of round 2. It never built it, committed it or posted.
   - It compiled first time.
 - The operator committed it, judged it and merged it into `swarm-run`:
-  `JUDGE PASS: build ok, run_checks 46/46 OK, base 0c9adf2, head 3368640`. It is now PR #8 (base `next-steps`).
+  `JUDGE PASS: build ok, run_checks 46/46 OK, base 0c9adf2, head 3368640`. It is now PR #8 (opened against `next-steps`; retargeted to main after PR #6 merged).
 
 | round | wall | turns | stop | total tokens | uncached in | cached in | out (reasoning) | cost (API $) |
 |---|---|---|---|---|---|---|---|---|

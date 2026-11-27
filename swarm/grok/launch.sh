@@ -18,13 +18,13 @@
 #   TOKEN_BUDGET  default 3000000           total tokens (input+cached+output) for the whole swarm;
 #                                           checked after every round, STOP when reached
 #   MODEL         default empty (the CLI's default); e.g. grok-4.7
-#   BASE_REF      default origin/next-steps (PR #6; not merged, so the pilot builds on its branch)
+#   BASE_REF      default origin/main (PR #6 merged 27 Nov as 88898c6; was origin/next-steps while that PR was open)
 #   SWARM_HOME    default /workspace/ctl-swarm  (not a build/dist/out/target name: survives box resets)
 set -euo pipefail
 
 SWARM_HOME="${SWARM_HOME:-/workspace/ctl-swarm}"
 REPO_URL="${REPO_URL:-https://github.com/007vasy/constructor-theory-lean}"
-BASE_REF="${BASE_REF:-origin/next-steps}"
+BASE_REF="${BASE_REF:-origin/main}"
 # Prebuilt Mathlib v4.36.0 (7.3 GB), shared read-only. Box: /workspace/ctl; elsewhere: run `lake exe cache get` in $SWARM_HOME/repo first.
 if [ -z "${PKGS:-}" ]; then [ -d /workspace/ctl/.lake/packages ] && PKGS=/workspace/ctl/.lake/packages || PKGS="$SWARM_HOME/repo/.lake/packages"; fi
 GROK_BIN="${GROK_BIN:-$HOME/.grok/bin/grok}"
